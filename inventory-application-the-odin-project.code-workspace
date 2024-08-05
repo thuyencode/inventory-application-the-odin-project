@@ -16,9 +16,6 @@
     },
     "emmet.includeLanguages": {
       "ejs": "html"
-    },
-    "files.associations": {
-      "*.pgsql": "sql"
     }
   },
   "extensions": {
