@@ -8,7 +8,9 @@
     "build": "esbuild src/index.ts --bundle --minify --packages=external --platform=node --outfile=dist/index.js --format=esm",
     "dev": "tsx watch --env-file=.env.development.local src/index.ts",
     "start": "node --env-file=.env.production dist/index.js",
-    "lint": "tsc ; eslint ./src"
+    "lint": "tsc ; eslint ./src",
+    "populate-db:dev": "dotenvx run -f .env.development.local -- tsx scripts/populate_db.ts",
+    "populate-db:prod": "dotenvx run -f .env.production -- tsx scripts/populate_db.ts"
   },
   "repository": {
     "type": "git",
