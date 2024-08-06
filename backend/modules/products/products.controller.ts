@@ -1,5 +1,6 @@
 import { NotFound } from '@backend/errors'
 import BadRequest from '@backend/errors/BadRequest'
+import type { Product } from '@shared/types'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import {
@@ -11,8 +12,9 @@ import {
 
 export const handleProductsApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
-    let products
-    let next
+    let products: Product[]
+    let next: string | undefined
+
     const queryString = req.query.page
 
     const pages_count = await getPagesCount()
@@ -39,7 +41,7 @@ export const handleProductsApi = expressAsyncHandler(
       products = await getProductsPagination(page)
     }
 
-    res.send({ products, pages_count: pages_count, next })
+    res.send({ products, pages_count, next })
   }
 )
 
