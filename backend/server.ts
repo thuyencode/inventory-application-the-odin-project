@@ -1,5 +1,6 @@
 import compression from 'compression'
 import e from 'express'
+import helmet from 'helmet'
 import { getPublicPath } from './libs/utils'
 import { error_handler, undefined_routes_handler } from './middlewares'
 import categories_routes from './modules/categories/categories.route'
@@ -7,10 +8,11 @@ import products_routes from './modules/products/products.route'
 
 const app = e()
 
-app.disable('x-powered-by')
-
 // Compression middleware
 app.use(compression())
+
+// Security hardening
+app.use(helmet())
 
 // Body parser middleware
 app.use(e.json())
