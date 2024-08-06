@@ -2,7 +2,7 @@ import compression from 'compression'
 import e from 'express'
 import { getPublicPath } from './libs/utils'
 import { error_handler, undefined_routes_handler } from './middlewares'
-import product_routes from './modules/products/products.route'
+import products_routes from './modules/products/products.route'
 
 const app = e()
 
@@ -19,7 +19,7 @@ app.use(e.urlencoded({ extended: true }))
 app.use(e.static(getPublicPath()))
 
 // Define routes
-app.use('/api/products', product_routes)
+app.use('/api/products', products_routes)
 
 // Handle undefined routes
 app.use(undefined_routes_handler)
