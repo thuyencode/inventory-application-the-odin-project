@@ -1,7 +1,7 @@
 SELECT
   CEIL(COUNT(*) / 10.0) AS pages_count
 FROM
-  category;
+  product;
 
 -- ?limit=10
 SELECT

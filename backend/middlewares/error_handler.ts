@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { HttpError, InternalServerError, NotFound } from '@backend/errors'
+import { HttpError, InternalServerError } from '@backend/errors'
 import type e from 'express'
 
 function error_handler(
@@ -9,18 +9,6 @@ function error_handler(
   next: e.NextFunction
 ) {
   try {
-    if (err instanceof NotFound) {
-      res.status(err.statusCode).render('404', {
-        title: 'Not Found',
-        navigation: {
-          href: '/',
-          name: 'Home',
-          icon_name: 'mdi:home'
-        }
-      })
-      return
-    }
-
     if (err instanceof HttpError) {
       if (err instanceof InternalServerError) {
         console.error(err)

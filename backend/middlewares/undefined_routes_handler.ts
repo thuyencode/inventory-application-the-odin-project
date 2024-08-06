@@ -1,4 +1,5 @@
-import { MethodNotAllowed, NotFound } from '@backend/errors'
+import { MethodNotAllowed } from '@backend/errors'
+import { getPublicPath } from '@backend/libs/utils'
 import type e from 'express'
 import { HttpMethod } from 'http-status-ts'
 
@@ -11,7 +12,7 @@ function undefined_routes_handler(
     return next(new MethodNotAllowed())
   }
 
-  next(new NotFound())
+  res.sendFile(getPublicPath('index.html'))
 }
 
 export default undefined_routes_handler
