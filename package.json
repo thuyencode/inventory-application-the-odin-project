@@ -2,13 +2,13 @@
   "name": "create-nodejs-typescript",
   "version": "1.0.0",
   "description": "A simple template to start a NodeJS and TypeScript project",
-  "main": "src/index.ts",
+  "main": "backend/index.ts",
   "type": "module",
   "scripts": {
-    "build": "esbuild src/index.ts --bundle --minify --packages=external --platform=node --outfile=dist/index.js --format=esm",
-    "dev": "tsx watch --env-file=.env.development.local src/index.ts",
-    "start": "node --env-file=.env.production dist/index.js",
-    "lint": "tsc ; eslint ./src",
+    "build:backend": "esbuild backend/index.ts --bundle --minify --packages=external --platform=node --outfile=dist/index.js --format=esm",
+    "dev:backend": "tsx watch --env-file=.env.development.local backend/index.ts",
+    "start:backend": "node --env-file=.env.production dist/index.js",
+    "lint:backend": "tsc ; eslint ./backend",
     "populate-db:dev": "dotenvx run -f .env.development.local -- tsx scripts/populate_db.ts",
     "populate-db:prod": "dotenvx run -f .env.production -- tsx scripts/populate_db.ts"
   },

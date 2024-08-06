@@ -10,8 +10,8 @@ FROM
 
 -- Select all products and their categories
 SELECT
-  product.name AS product,
-  category.name AS category
+  product.*,
+  category.name AS category_name
 FROM
   product
   JOIN category ON product.category_id = category.id;
