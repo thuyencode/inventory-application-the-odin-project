@@ -5,19 +5,24 @@ import pool from './pool'
  * Select all rows in the `product` table
  *
  * @export
+ * @async
  * @returns {Promise<Product[]>}
  */
-export function selectProducts(): Promise<Product[]>
+export async function selectProducts(): Promise<Product[]>
 
 /**
  * Select a part of rows in the `product` table
  *
  * @export
+ * @async
  * @param {number} limit
  * @param {?number} [page]
  * @returns {Promise<Product[]>}
  */
-export function selectProducts(limit: number, page?: number): Promise<Product[]>
+export async function selectProducts(
+  limit: number,
+  page?: number
+): Promise<Product[]>
 
 export async function selectProducts(
   limit?: number,
