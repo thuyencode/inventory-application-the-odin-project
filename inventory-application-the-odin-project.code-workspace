@@ -1,7 +1,7 @@
 {
   "folders": [
     {
-      "path": ".",
+      "path": "."
     }
   ],
   "settings": {
@@ -10,7 +10,7 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "always",
+      "source.organizeImports": "always"
     },
     "tailwindCSS.emmetCompletions": true,
     "tailwindCSS.classAttributes": [
@@ -23,7 +23,7 @@
     "files.associations": {
       "*.css": "tailwindcss",
       "*.scss": "tailwindcss"
-    },
+    }
   },
   "extensions": {
     "recommendations": [
@@ -33,7 +33,7 @@
       "christian-kohler.npm-intellisense",
       "antfu.iconify",
       "formulahendry.auto-complete-tag",
-      "digitalbrainstem.javascript-ejs-support",
+      "digitalbrainstem.javascript-ejs-support"
     ]
   }
 }
