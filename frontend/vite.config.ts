@@ -8,7 +8,14 @@ export default defineConfig({
   plugins: [react(), TanStackRouterVite()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@frontend': path.resolve(__dirname, './src'),
+      '@shared': path.resolve(__dirname, '../shared')
     }
+  },
+  build: {
+    outDir: path.resolve(__dirname, '../public'),
+    emptyOutDir: true
   }
 })
+
+console.log(path.resolve(__dirname, './src'))

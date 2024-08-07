@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-
+import { Button } from '@frontend/components/ui/button'
 import { createLazyFileRoute } from '@tanstack/react-router'
-
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import reactLogo from '../assets/react.svg'
 import tailwindLogo from '../assets/tailwind.svg'
 import tanstackLogo from '../assets/tanstack.png'
+import viteLogo from '/vite.svg'
 
 export const Route = createLazyFileRoute('/')({
   component: App
