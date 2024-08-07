@@ -1,25 +1,29 @@
 {
   "folders": [
     {
-      "path": "."
+      "path": ".",
     }
   ],
   "settings": {
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.jsxSingleQuote": true,
-    "prettier.trailingComma": "none",
+    "prettier.configPath": ".prettierrc",
+    "prettier.prettierPath": "./node_modules/prettier",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "always",
-      "source.organizeImports": "always"
+      "source.organizeImports": "always",
     },
-    "emmet.includeLanguages": {
-      "ejs": "html"
-    },
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.classAttributes": [
+      "class",
+      "className",
+      "ngClass",
+      "defaultProps",
+      "styles"
+    ],
     "files.associations": {
-      "*.css": "tailwindcss"
-    }
+      "*.css": "tailwindcss",
+      "*.scss": "tailwindcss"
+    },
   },
   "extensions": {
     "recommendations": [
@@ -29,7 +33,7 @@
       "christian-kohler.npm-intellisense",
       "antfu.iconify",
       "formulahendry.auto-complete-tag",
-      "digitalbrainstem.javascript-ejs-support"
+      "digitalbrainstem.javascript-ejs-support",
     ]
   }
 }

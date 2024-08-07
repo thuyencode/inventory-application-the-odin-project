@@ -1,15 +1,21 @@
 import js from '@eslint/js'
+import eslintConfigPrettier from 'eslint-config-prettier'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import tailwind from 'eslint-plugin-tailwindcss'
 import globals from 'globals'
 import ts_eslint from 'typescript-eslint'
 
 export default ts_eslint.config(
   {
-    extends: [js.configs.recommended, ...ts_eslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...ts_eslint.configs.recommended,
+      ...tailwind.configs['flat/recommended']
+    ],
     files: ['**/*.{ts,tsx}'],
-    ignores: ['dist'],
+    ignores: ['dist', 'node_modules', 'src/client/components/ui/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2023,
       globals: globals.browser
@@ -27,7 +33,8 @@ export default ts_eslint.config(
     }
   },
   {
-    ignores: ['src/client/components/ui/*.{ts,tsx}'],
+    extends: [eslintConfigPrettier],
+    ignores: ['dist', 'node_modules', 'src/client/components/ui/*.{ts,tsx}'],
     settings: {
       react: {
         version: 'detect'
