@@ -1,5 +1,5 @@
 import { MethodNotAllowed } from '@backend/errors'
-import { getPublicPath } from '@backend/libs/utils'
+import { getPublicPath } from '@shared/libs/utils'
 import type e from 'express'
 import { HttpMethod } from 'http-status-ts'
 
