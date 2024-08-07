@@ -11,6 +11,7 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-router": "^1.46.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "compression": "^1.7.4",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@tanstack/router-devtools": "^1.46.8",
+    "@tanstack/router-plugin": "^1.46.6",
     "@types/compression": "^1.7.5",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
