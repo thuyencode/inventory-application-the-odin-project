@@ -48,18 +48,30 @@ const IndexLazyRoute = IndexLazyImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
     '/table': {
+      id: '/table'
+      path: '/table'
+      fullPath: '/table'
       preLoaderRoute: typeof TableImport
       parentRoute: typeof rootRoute
     }
     '/form': {
+      id: '/form'
+      path: '/form'
+      fullPath: '/form'
       preLoaderRoute: typeof FormLazyImport
       parentRoute: typeof rootRoute
     }
     '/query': {
+      id: '/query'
+      path: '/query'
+      fullPath: '/query'
       preLoaderRoute: typeof QueryLazyImport
       parentRoute: typeof rootRoute
     }
@@ -68,11 +80,39 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
+export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   TableRoute,
   FormLazyRoute,
   QueryLazyRoute,
-])
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/table",
+        "/form",
+        "/query"
+      ]
+    },
+    "/": {
+      "filePath": "index.lazy.tsx"
+    },
+    "/table": {
+      "filePath": "table.tsx"
+    },
+    "/form": {
+      "filePath": "form.lazy.tsx"
+    },
+    "/query": {
+      "filePath": "query.lazy.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */
