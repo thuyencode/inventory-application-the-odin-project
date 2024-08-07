@@ -25,12 +25,13 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.16.5",
-    "typescript": "^5.5.4",
     "valibot": "^0.37.0",
     "vite-express": "*"
   },
   "devDependencies": {
+    "@eslint/js": "^9.8.0",
     "@types/compression": "^1.7.5",
+    "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
     "@types/node": "^22.1.0",
     "@types/pg": "^8.11.6",
@@ -38,8 +39,15 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.8.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1",
     "vite": "^5.3.5"
   }
 }

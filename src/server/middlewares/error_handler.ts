@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type e from 'express'
 import { HttpError, InternalServerError } from '../errors'
 
