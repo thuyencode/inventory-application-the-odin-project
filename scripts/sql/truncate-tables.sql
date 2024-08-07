@@ -1,3 +1,0 @@
-TRUNCATE TABLE product;
-
-TRUNCATE TABLE category CASCADE;
