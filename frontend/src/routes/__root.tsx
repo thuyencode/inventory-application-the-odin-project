@@ -1,6 +1,3 @@
-import '../index.css'
-import '../App.css'
-
 import { useState } from 'react'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -9,14 +6,13 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
   component: () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [queryClient] = useState(
       new QueryClient({
         defaultOptions: {
           queries: {
-            retry: 3,
-          },
-        },
+            retry: 3
+          }
+        }
       })
     )
     return (
@@ -42,5 +38,5 @@ export const Route = createRootRoute({
         <TanStackRouterDevtools />
       </>
     )
-  },
+  }
 })

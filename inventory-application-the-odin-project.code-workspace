@@ -16,6 +16,9 @@
     },
     "emmet.includeLanguages": {
       "ejs": "html"
+    },
+    "files.associations": {
+      "*.css": "tailwindcss"
     }
   },
   "extensions": {

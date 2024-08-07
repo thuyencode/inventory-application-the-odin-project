@@ -1,14 +1,15 @@
-import viteLogo from '/vite.svg'
 import { useState } from 'react'
+import viteLogo from '/vite.svg'
 
 import { createLazyFileRoute } from '@tanstack/react-router'
 
+import { Button } from '@/components/ui/button'
 import reactLogo from '../assets/react.svg'
 import tailwindLogo from '../assets/tailwind.svg'
 import tanstackLogo from '../assets/tanstack.png'
 
 export const Route = createLazyFileRoute('/')({
-  component: App,
+  component: App
 })
 
 function App() {
@@ -35,9 +36,9 @@ function App() {
         React + Vite + TypeScript + TanStack + Tailwind
       </p>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)} className='mb-6'>
+        <Button className='mb-6' onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/routes/index.lazy.tsx</code> and save to test HMR
         </p>
