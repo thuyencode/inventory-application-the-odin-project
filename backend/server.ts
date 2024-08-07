@@ -1,4 +1,5 @@
 import compression from 'compression'
+import cors from 'cors'
 import e from 'express'
 import helmet from 'helmet'
 import { getPublicPath } from './libs/utils'
@@ -7,6 +8,9 @@ import categories_routes from './modules/categories/categories.route'
 import products_routes from './modules/products/products.route'
 
 const app = e()
+
+// CORS
+app.use(cors())
 
 // Compression middleware
 app.use(compression())
