@@ -1,3 +1,4 @@
+import { NextUIProvider } from '@nextui-org/system'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -16,6 +17,8 @@ declare module '@tanstack/react-router' {
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <NextUIProvider>
+      <RouterProvider router={router} />
+    </NextUIProvider>
   </React.StrictMode>
 )
