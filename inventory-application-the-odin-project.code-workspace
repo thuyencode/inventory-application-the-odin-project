@@ -33,9 +33,7 @@
       "christian-kohler.npm-intellisense",
       "antfu.iconify",
       "formulahendry.auto-complete-tag",
-      "digitalbrainstem.javascript-ejs-support",
-      "bradlc.vscode-tailwindcss",
-      "burkeholland.simple-react-snippets"
+      "digitalbrainstem.javascript-ejs-support"
     ]
   }
 }

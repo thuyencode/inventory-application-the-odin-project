@@ -10,21 +10,32 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
+<<<<<<< HEAD
     "@nextui-org/button": "^2.0.37",
     "@nextui-org/navbar": "^2.0.36",
     "@nextui-org/system": "^2.2.5",
     "@nextui-org/theme": "^2.2.9",
+=======
+    "@radix-ui/react-slot": "^1.1.0",
+>>>>>>> parent of 35d8903 (Say goodbye to Shadcn/UI)
     "@tanstack/react-router": "^1.46.8",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "compression": "^1.7.4",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "framer-motion": "^11.3.23",
     "http-status-ts": "^2.0.1",
+<<<<<<< HEAD
+=======
+    "lucide-react": "^0.424.0",
+>>>>>>> parent of 35d8903 (Say goodbye to Shadcn/UI)
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.16.5",
     "valibot": "^0.37.0",
     "vite-express": "*"
