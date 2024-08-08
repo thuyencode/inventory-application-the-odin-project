@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
   </head>
-  <body>
+  <body class="drawer drawer-end w-screen">
+    <input class="drawer-toggle" id="mobile-nav" type="checkbox" />
+
     <div
-      class="container mx-auto grid min-h-dvh grid-rows-[auto_1fr_auto]"
+      class="drawer-content grid min-h-dvh grid-rows-[auto_1fr_auto]"
       id="root"
     ></div>
+
     <script type="module" src="/src/client/main.tsx"></script>
   </body>
 </html>

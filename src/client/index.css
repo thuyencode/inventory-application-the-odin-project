@@ -21,4 +21,8 @@
   * {
     @apply text-base max-md:text-sm;
   }
+
+  .icon-wrapper {
+    @apply inline-flex items-center gap-1;
+  }
 }

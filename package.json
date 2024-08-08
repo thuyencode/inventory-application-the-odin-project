@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@iconify/react": "^5.0.2",
     "@tanstack/router-devtools": "^1.46.8",
     "@tanstack/router-plugin": "^1.46.6",
     "@types/compression": "^1.7.5",
