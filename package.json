@@ -10,10 +10,7 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
-<<<<<<< HEAD
-=======
-    "@radix-ui/react-slot": "^1.1.0",
->>>>>>> parent of 35d8903 (Say goodbye to Shadcn/UI)
+    "@radix-ui/react-navigation-menu": "^1.2.0",
     "@tanstack/react-router": "^1.46.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -21,10 +18,7 @@
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "http-status-ts": "^2.0.1",
-<<<<<<< HEAD
-=======
     "lucide-react": "^0.424.0",
->>>>>>> parent of 35d8903 (Say goodbye to Shadcn/UI)
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
     "react": "^18.3.1",

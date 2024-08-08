@@ -1,4 +1,3 @@
-import { NextUIProvider } from '@nextui-org/system'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 
@@ -13,11 +12,7 @@ declare module '@tanstack/react-router' {
 }
 
 function App() {
-  return (
-    <NextUIProvider>
-      <RouterProvider router={router} />
-    </NextUIProvider>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
