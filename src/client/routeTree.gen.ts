@@ -17,6 +17,8 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
+const ProductsIndexLazyImport = createFileRoute('/products/')()
+const CategoriesIndexLazyImport = createFileRoute('/categories/')()
 
 // Create/Update Routes
 
@@ -24,6 +26,20 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const ProductsIndexLazyRoute = ProductsIndexLazyImport.update({
+  path: '/products/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/products/index.lazy').then((d) => d.Route),
+)
+
+const CategoriesIndexLazyRoute = CategoriesIndexLazyImport.update({
+  path: '/categories/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/categories/index.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -36,12 +52,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/categories/': {
+      id: '/categories/'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/products/': {
+      id: '/products/'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexLazyRoute,
+  CategoriesIndexLazyRoute,
+  ProductsIndexLazyRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -51,11 +85,19 @@ export const routeTree = rootRoute.addChildren({ IndexLazyRoute })
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/categories/",
+        "/products/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/categories/": {
+      "filePath": "categories/index.lazy.tsx"
+    },
+    "/products/": {
+      "filePath": "products/index.lazy.tsx"
     }
   }
 }

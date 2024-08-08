@@ -3,17 +3,12 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 import reactPlugin from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tailwind from 'eslint-plugin-tailwindcss'
 import globals from 'globals'
 import ts_eslint from 'typescript-eslint'
 
 export default ts_eslint.config(
   {
-    extends: [
-      js.configs.recommended,
-      ...ts_eslint.configs.recommended,
-      ...tailwind.configs['flat/recommended']
-    ],
+    extends: [js.configs.recommended, ...ts_eslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     ignores: ['dist', 'node_modules', 'src/client/components/ui/*.{ts,tsx}'],
     languageOptions: {
