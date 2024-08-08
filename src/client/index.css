@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-4xl font-extrabold max-md:text-3xl max-md:font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold max-md:text-2xl max-md:font-semibold;
+  }
+  h3 {
+    @apply text-2xl font-semibold max-md:text-xl max-md:font-medium;
+  }
+  h4 {
+    @apply text-xl max-md:text-lg md:font-medium;
+  }
+  p {
+    @apply text-lg max-md:text-base;
+  }
+  * {
+    @apply text-base max-md:text-sm;
+  }
+}

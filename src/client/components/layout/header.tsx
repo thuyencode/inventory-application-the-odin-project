@@ -3,23 +3,19 @@ import { Link } from '@tanstack/react-router'
 function Header() {
   return (
     <div className='navbar bg-base-100'>
-      <div className='navbar-start'>The Fake Inventory</div>
+      <div className='navbar-start'>
+        <h3>The Fake Inventory</h3>
+      </div>
       <div className='navbar-center'>
-        <ul className='menu menu-horizontal join'>
+        <ul className='menu menu-horizontal gap-1'>
           <li>
-            <Link className='join-item' to='/'>
-              Home
-            </Link>
+            <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link className='join-item' to='/products'>
-              Products
-            </Link>
+            <Link to='/products'>Products</Link>
           </li>
           <li>
-            <Link className='join-item' to='/categories'>
-              Categories
-            </Link>
+            <Link to='/categories'>Categories</Link>
           </li>
         </ul>
       </div>
