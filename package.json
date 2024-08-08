@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
-    "@radix-ui/react-navigation-menu": "^1.2.0",
     "@tanstack/react-router": "^1.46.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -18,13 +17,10 @@
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "http-status-ts": "^2.0.1",
-    "lucide-react": "^0.424.0",
     "nodemon": "^3.1.4",
     "pg": "^8.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.16.5",
     "valibot": "^0.37.0",
     "vite-express": "*"
