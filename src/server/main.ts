@@ -7,6 +7,8 @@ import products_routes from './modules/products/routes'
 
 const app = e()
 
+app.disable('x-powered-by')
+
 // Compression middleware
 app.use(compression())
 
