@@ -5,7 +5,7 @@ import ThemeToggle from './theme-toggle'
 function Navbar() {
   return (
     <nav className='container navbar'>
-      <div className='navbar-start'>
+      <div className='navbar-start max-md:order-last max-md:mr-5 max-md:justify-end'>
         <h3
           className='icon-wrapper gap-4'
           aria-description='Title: The Fake Inventory'
@@ -38,7 +38,7 @@ function Navbar() {
         </ul>
       </div>
 
-      <div className='navbar-end'>
+      <div className='navbar-end max-md:justify-start'>
         <ul className='menu menu-horizontal gap-1'>
           <li className='max-md:hidden'>
             <ThemeToggle />
