@@ -21,7 +21,9 @@
   * {
     @apply text-base;
   }
+}
 
+@layer utilities {
   .icon-wrapper {
     @apply inline-flex items-center gap-1;
   }

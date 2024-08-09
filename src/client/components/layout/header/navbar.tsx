@@ -6,7 +6,13 @@ function Navbar() {
   return (
     <nav className='container navbar'>
       <div className='navbar-start'>
-        <h4>The Fake Inventory</h4>
+        <h3
+          className='icon-wrapper gap-4'
+          aria-description='Title: The Fake Inventory'
+        >
+          The Fake
+          <Icon className='text-3xl' icon={'mdi:warehouse'} />
+        </h3>
       </div>
 
       <div className='navbar-center max-lg:hidden'>
@@ -34,11 +40,15 @@ function Navbar() {
 
       <div className='navbar-end'>
         <ul className='menu menu-horizontal gap-1'>
-          <li>
+          <li className='max-lg:hidden'>
             <ThemeToggle />
           </li>
           <li className='lg:hidden'>
-            <label htmlFor='mobile-nav' className='drawer-button'>
+            <label
+              htmlFor='mobile-nav'
+              className='drawer-button'
+              aria-description='Open the sidebar'
+            >
               <Icon className='text-2xl' icon={'ri:sidebar-fold-fill'} />
             </label>
           </li>
