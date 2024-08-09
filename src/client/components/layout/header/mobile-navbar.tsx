@@ -16,7 +16,7 @@ function MobileNavbar() {
         <ul className='menu mt-2 w-72 pr-6'>
           <li>
             <label
-              className='text-error hover:bg-error hover:text-error-content'
+              className='text-error hover:bg-error/70 hover:text-error-content active:!bg-error active:!text-error-content'
               htmlFor='mobile-nav'
               aria-label='close sidebar'
             >
