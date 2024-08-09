@@ -18,19 +18,19 @@ function Navbar() {
       <div className='navbar-center max-lg:hidden'>
         <ul className='menu menu-horizontal gap-1'>
           <li>
-            <Link to='/'>
+            <Link tabIndex={0} to='/'>
               <Icon className='text-2xl' icon={'mdi:home'} />
               Home
             </Link>
           </li>
           <li>
-            <Link to='/products'>
+            <Link tabIndex={0} to='/products'>
               <Icon className='text-2xl' icon={'mdi:box-variant'} />
               Products
             </Link>
           </li>
           <li>
-            <Link to='/categories'>
+            <Link tabIndex={0} to='/categories'>
               <Icon className='text-2xl' icon={'mdi:tag'} />
               Categories
             </Link>
@@ -45,6 +45,7 @@ function Navbar() {
           </li>
           <li className='lg:hidden'>
             <label
+              tabIndex={0}
               htmlFor='mobile-nav'
               className='drawer-button'
               aria-description='Open the sidebar'

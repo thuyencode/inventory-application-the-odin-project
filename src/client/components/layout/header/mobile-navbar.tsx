@@ -13,10 +13,11 @@ function MobileNavbar() {
       ></label>
 
       <div className='flex min-h-full bg-base-300 shadow-lg'>
-        <ul className='menu mt-2 w-72 pr-6'>
+        <ul className='menu z-10 mt-2 w-72 pr-6'>
           <li>
             <label
-              className='text-error hover:bg-error/70 hover:text-error-content active:!bg-error active:!text-error-content'
+              tabIndex={0}
+              className='text-error hover:bg-error/70 hover:text-error-content focus:bg-error/70 focus:text-error-content active:!bg-error active:!text-error-content'
               htmlFor='mobile-nav'
               aria-label='close sidebar'
             >
@@ -25,19 +26,19 @@ function MobileNavbar() {
             </label>
           </li>
           <li>
-            <Link to='/'>
+            <Link tabIndex={0} to='/'>
               <Icon className='text-xl' icon={'mdi:home'} />
               Home
             </Link>
           </li>
           <li>
-            <Link to='/products'>
+            <Link tabIndex={0} to='/products'>
               <Icon className='text-xl' icon={'mdi:box-variant'} />
               Products
             </Link>
           </li>
           <li>
-            <Link to='/categories'>
+            <Link tabIndex={0} to='/categories'>
               <Icon className='text-xl' icon={'mdi:tag'} />
               Categories
             </Link>
