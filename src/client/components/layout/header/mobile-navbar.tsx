@@ -5,7 +5,7 @@ import ThemeToggle from './theme-toggle'
 
 function MobileNavbar() {
   return createPortal(
-    <nav className='drawer-side lg:hidden'>
+    <nav className='drawer-side md:hidden'>
       <label
         htmlFor='mobile-nav'
         aria-label='close sidebar'

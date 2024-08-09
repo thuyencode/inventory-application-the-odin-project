@@ -15,7 +15,7 @@ function Navbar() {
         </h3>
       </div>
 
-      <div className='navbar-center max-lg:hidden'>
+      <div className='navbar-center max-md:hidden'>
         <ul className='menu menu-horizontal gap-1'>
           <li>
             <Link tabIndex={0} to='/'>
@@ -40,10 +40,10 @@ function Navbar() {
 
       <div className='navbar-end'>
         <ul className='menu menu-horizontal gap-1'>
-          <li className='max-lg:hidden'>
+          <li className='max-md:hidden'>
             <ThemeToggle />
           </li>
-          <li className='lg:hidden'>
+          <li className='md:hidden'>
             <label
               tabIndex={0}
               htmlFor='mobile-nav'

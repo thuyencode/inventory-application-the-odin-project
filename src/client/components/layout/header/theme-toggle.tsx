@@ -32,13 +32,13 @@ function ThemeToggle() {
   }, [])
 
   return (
-    <details className='dropdown-end lg:dropdown'>
+    <details className='dropdown-end md:dropdown'>
       <summary className='gap-2 capitalize'>
         <Icon className='text-xl' icon={toggleTitle.icon} />
         {toggleTitle.title}
       </summary>
 
-      <ul className='border-base-content/50 lg:menu lg:dropdown-content lg:z-[1] lg:w-40 lg:rounded-box lg:border-2 lg:bg-base-300 lg:p-2 lg:shadow-lg'>
+      <ul className='border-base-content/50 md:menu md:dropdown-content md:z-[1] md:w-40 md:rounded-box md:border-2 md:bg-base-300 md:p-2 md:shadow-lg'>
         <li>
           <button
             className='capitalize'
