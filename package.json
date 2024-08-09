@@ -21,15 +21,15 @@
     "pg": "^8.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tsx": "^4.16.5",
+    "tsx": "^4.17.0",
     "valibot": "^0.37.0",
     "vite-express": "*"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@iconify/react": "^5.0.2",
-    "@tanstack/router-devtools": "^1.46.8",
-    "@tanstack/router-plugin": "^1.46.6",
+    "@tanstack/router-devtools": "^1.46.9",
+    "@tanstack/router-plugin": "^1.47.0",
     "@types/compression": "^1.7.5",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
@@ -49,9 +49,9 @@
     "postcss": "^8.4.41",
     "prettier": "3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.7",
+    "tailwindcss": "^3.4.9",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.3.5"
+    "vite": "^5.4.0"
   }
 }
