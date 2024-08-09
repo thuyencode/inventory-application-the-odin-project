@@ -12,7 +12,7 @@ function MobileNavbar() {
         className='drawer-overlay'
       ></label>
 
-      <div className='flex min-h-full bg-base-300 dark:border-l-2 dark:border-l-base-content/50'>
+      <div className='flex min-h-full bg-base-300 shadow-lg'>
         <ul className='menu mt-2 w-72 pr-6'>
           <li>
             <label
