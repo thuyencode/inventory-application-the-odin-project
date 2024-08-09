@@ -1,11 +1,12 @@
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
+import ThemeToggle from './theme-toggle'
 
 function Navbar() {
   return (
-    <nav className='navbar container'>
+    <nav className='container navbar'>
       <div className='navbar-start'>
-        <h3>The Fake Inventory</h3>
+        <h4>The Fake Inventory</h4>
       </div>
 
       <div className='navbar-center max-lg:hidden'>
@@ -34,14 +35,7 @@ function Navbar() {
       <div className='navbar-end'>
         <ul className='menu menu-horizontal gap-1'>
           <li>
-            <a
-              className='icon-wrapper'
-              href='https://github.com/thuyencode/inventory-application-the-odin-project'
-              target='_blank'
-            >
-              <Icon className='text-2xl' icon={'mdi:github'} />
-              Github
-            </a>
+            <ThemeToggle />
           </li>
           <li className='lg:hidden'>
             <label htmlFor='mobile-nav' className='drawer-button'>

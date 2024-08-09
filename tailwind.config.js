@@ -1,4 +1,5 @@
 import daisyui from 'daisyui'
+import daisyuiThemes from 'daisyui/src/theming/themes'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,5 +11,17 @@ export default {
       }
     }
   },
-  plugins: [daisyui]
+  plugins: [daisyui],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...daisyuiThemes['winter']
+        },
+        dark: {
+          ...daisyuiThemes['night']
+        }
+      }
+    ]
+  }
 }
