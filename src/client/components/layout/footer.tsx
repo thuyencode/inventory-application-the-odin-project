@@ -7,7 +7,8 @@ function Footer() {
         <a
           className='icon-wrapper link-hover link font-medium'
           tabIndex={0}
-          href='https://thuyencode/inventory-application-the-odin-project'
+          href='https://github.com/thuyencode/inventory-application-the-odin-project'
+          target='_blank'
         >
           <Icon className='text-xl' icon={'mdi:github'} />
           Thuyen Code
