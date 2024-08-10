@@ -38,7 +38,7 @@ function ThemeToggle() {
         {toggleTitle.title}
       </summary>
 
-      <ul className='border-base-content/50 md:menu md:dropdown-content md:z-[1] md:w-40 md:rounded-box md:border-2 md:bg-base-300 md:p-2 md:shadow-lg'>
+      <ul className='border-base-content/50 md:menu md:dropdown-content md:z-[1] md:w-40 md:rounded-box md:border md:bg-base-300 md:p-2 md:shadow-lg'>
         <li>
           <button
             className='capitalize'
