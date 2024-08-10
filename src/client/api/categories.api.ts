@@ -7,26 +7,13 @@ const categoriesApi = baseApi.extend((options) => ({
 }))
 
 /**
- * Get response from `/api/categories`
+ * Get response from `/api/categories`.
  *
  * @export
  * @async
+ * @param {?AbortSignal} signal
  * @returns {Promise<CategoriesResponse>}
  */
-export async function getCategories(): Promise<CategoriesResponse>
-
-/**
- * Get response from `/api/categories`. Supports `AbortSignal`.
- *
- * @export
- * @async
- * @param {AbortSignal} signal
- * @returns {Promise<CategoriesResponse>}
- */
-export async function getCategories(
-  signal: AbortSignal
-): Promise<CategoriesResponse>
-
 export async function getCategories(signal?: AbortSignal) {
   return await categoriesApi.get('', { signal }).json<CategoriesResponse>()
 }

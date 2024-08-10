@@ -7,26 +7,13 @@ const productsApi = baseApi.extend((options) => ({
 }))
 
 /**
- * Get response from `/api/products`
+ * Get response from `/api/products`.
  *
  * @export
  * @async
+ * @param {?AbortSignal} [signal]
  * @returns {Promise<Omit<ProductsResponse, 'next'>>}
  */
-export async function getProducts(): Promise<Omit<ProductsResponse, 'next'>>
-
-/**
- * Get response from `/api/products`. Supports `AbortSignal`.
- *
- * @export
- * @async
- * @param {AbortSignal} signal
- * @returns {Promise<Omit<ProductsResponse, 'next'>>}
- */
-export async function getProducts(
-  signal: AbortSignal
-): Promise<Omit<ProductsResponse, 'next'>>
-
 export async function getProducts(signal?: AbortSignal) {
   return await productsApi
     .get('', { signal })
