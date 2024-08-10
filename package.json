@@ -6,10 +6,14 @@
   "scripts": {
     "dev": "dotenvx run -f .env.development.local -- nodemon -w src/server -x tsx src/server/main.ts",
     "start": "dotenvx run -f .env.production.local -- tsx src/server/main.ts",
-    "build": "vite build"
+    "build": "vite build",
+    "populate-db:dev": "dotenvx run -f .env.development.local -- tsx scripts/populate_db.ts",
+    "populate-db:prod": "dotenvx run -f .env.production.local -- tsx scripts/populate_db.ts"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.6.4",
+    "@tanstack/react-query": "^5.51.23",
+    "@tanstack/react-query-devtools": "^5.51.23",
     "@tanstack/react-router": "^1.46.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -29,6 +33,7 @@
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@iconify/react": "^5.0.2",
+    "@tanstack/eslint-plugin-query": "^5.51.15",
     "@tanstack/router-devtools": "^1.46.9",
     "@tanstack/router-plugin": "^1.47.0",
     "@types/compression": "^1.7.5",
