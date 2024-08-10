@@ -4,9 +4,9 @@ import { Product } from '@/shared/types'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import {
-  getAllProducts,
   getPagesCount,
   getProductById,
+  getProducts,
   getProductsPagination
 } from './services'
 
@@ -20,7 +20,7 @@ export const handleProductsApi = expressAsyncHandler(
     const pages_count = await getPagesCount()
 
     if (queryString === undefined) {
-      products = await getAllProducts()
+      products = await getProducts()
     } else {
       const page = Number(queryString)
 
