@@ -9,7 +9,9 @@ export const Route = createRootRoute({
     <>
       <Header />
 
-      <Outlet />
+      <main className='container'>
+        <Outlet />
+      </main>
 
       <Footer />
 

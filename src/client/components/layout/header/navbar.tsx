@@ -7,11 +7,11 @@ function Navbar() {
     <nav className='container navbar'>
       <div className='navbar-start max-md:order-last max-md:mr-5 max-md:justify-end'>
         <h3
-          className='icon-wrapper gap-4'
+          className='icon-wrapper'
           aria-description='Title: The Fake Inventory'
         >
           The Fake
-          <Icon className='text-3xl' icon={'mdi:warehouse'} />
+          <Icon className='ml-1 text-3xl' icon={'mdi:warehouse'} />
         </h3>
       </div>
 
