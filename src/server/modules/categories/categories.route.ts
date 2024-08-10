@@ -1,5 +1,8 @@
 import e from 'express'
-import { handleCategoriesApi, handleCategoryByIdApi } from './controllers'
+import {
+  handleCategoriesApi,
+  handleCategoryByIdApi
+} from './categories.controller'
 
 const categories_routes = e.Router()
 

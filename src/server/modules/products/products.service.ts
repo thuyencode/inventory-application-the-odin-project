@@ -2,7 +2,7 @@ import {
   selectPagesCount,
   selectProductById,
   selectProducts
-} from '@/server/db/product'
+} from '@/server/db/product.db'
 import type { Product } from '@/shared/types'
 
 const LIMIT = 10

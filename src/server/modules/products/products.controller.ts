@@ -8,7 +8,7 @@ import {
   getProductById,
   getProducts,
   getProductsPagination
-} from './services'
+} from './products.service'
 
 export const handleProductsApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {

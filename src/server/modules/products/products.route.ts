@@ -1,5 +1,5 @@
 import e from 'express'
-import { handleProductByIdApi, handleProductsApi } from './controllers'
+import { handleProductByIdApi, handleProductsApi } from './products.controller'
 
 const products_routes = e.Router()
 

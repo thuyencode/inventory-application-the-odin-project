@@ -1,6 +1,4 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router'
-import { useEffect } from 'react'
-import { getCategoryById } from './api/categories'
 import { routeTree } from './routeTree.gen'
 
 // Create a new router instance
@@ -14,12 +12,6 @@ declare module '@tanstack/react-router' {
 }
 
 function App() {
-  useEffect(() => {
-    getCategoryById(1).then((res) => {
-      console.log(res)
-    })
-  }, [])
-
   return <RouterProvider router={router} />
 }
 

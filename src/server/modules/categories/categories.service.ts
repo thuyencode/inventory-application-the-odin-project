@@ -1,4 +1,4 @@
-import { selectCategories, selectCategoryById } from '@/server/db/category'
+import { selectCategories, selectCategoryById } from '@/server/db/category.db'
 import { Category } from '@/shared/types'
 
 export async function getCategories(): Promise<Category[]> {

@@ -1,5 +1,5 @@
 import { Product } from '@/shared/types'
-import pool from './pool'
+import pool from './pool.db'
 
 /**
  * Select all rows in the `product` table

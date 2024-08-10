@@ -2,8 +2,8 @@ import compression from 'compression'
 import e from 'express'
 import ViteExpress from 'vite-express'
 import { error_handler } from './middlewares'
-import categories_routes from './modules/categories/routes'
-import products_routes from './modules/products/routes'
+import categories_routes from './modules/categories/categories.route'
+import products_routes from './modules/products/products.route'
 
 const app = e()
 

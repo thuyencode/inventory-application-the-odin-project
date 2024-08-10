@@ -2,7 +2,7 @@ import { NotFound } from '@/server/errors'
 import BadRequest from '@/server/errors/BadRequest'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
-import { getCategories, getCategoryById } from './services'
+import { getCategories, getCategoryById } from './categories.service'
 
 export const handleCategoriesApi = expressAsyncHandler(
   async (_req: e.Request, res: e.Response) => {
