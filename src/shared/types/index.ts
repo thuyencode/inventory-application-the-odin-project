@@ -13,4 +13,5 @@ export type Product = {
   weight: number
   category_id: number
   image_url: string
+  category_name: string
 } & Category

@@ -30,7 +30,9 @@ export async function selectProducts(
 ): Promise<Product[]> {
   if (typeof limit === 'undefined') {
     const { rows }: { rows: Product[] } = await pool.query(
-      'SELECT * FROM product'
+      `SELECT product.*, category.name AS category_name
+      FROM product
+      JOIN category ON product.category_id = category.id`
     )
 
     return rows
@@ -39,7 +41,9 @@ export async function selectProducts(
   const offset = page <= 1 ? 0 : limit * (page - 1)
 
   const { rows }: { rows: Product[] } = await pool.query(
-    'SELECT * FROM product LIMIT $1 OFFSET $2',
+    `SELECT product.*, category.name AS category_name
+    FROM product
+    JOIN category ON product.category_id = category.id LIMIT $1 OFFSET $2`,
     [limit, offset]
   )
 
