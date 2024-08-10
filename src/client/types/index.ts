@@ -2,7 +2,7 @@ import { Category, Product } from '@/shared/types'
 
 export interface ProductsResponse {
   products: Product[]
-  page_count: number
+  pages_count: number
   next?: string
 }
 

@@ -1,23 +1,26 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { QueryClient } from '@tanstack/react-query'
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 import { Suspense } from 'react'
 import TanStackRouterDevtools from '../components/dev-mode-only/TanStackRouterDevtools'
 import Footer from '../components/layout/footer'
 import Header from '../components/layout/header'
 
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <Header />
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    component: () => (
+      <>
+        <Header />
 
-      <main className='container'>
-        <Outlet />
-      </main>
+        <main className='container'>
+          <Outlet />
+        </main>
 
-      <Footer />
+        <Footer />
 
-      <Suspense>
-        <TanStackRouterDevtools />
-      </Suspense>
-    </>
-  )
-})
+        <Suspense>
+          <TanStackRouterDevtools />
+        </Suspense>
+      </>
+    )
+  }
+)

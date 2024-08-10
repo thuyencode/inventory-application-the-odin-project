@@ -8,6 +8,9 @@ export default {
     extend: {
       container: {
         center: true
+      },
+      gridTemplateColumns: {
+        ram: 'repeat(auto-fill, minmax(256px, 1fr))'
       }
     }
   },
