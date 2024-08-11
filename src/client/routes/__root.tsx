@@ -11,7 +11,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       <>
         <Header />
 
-        <main className='container'>
+        <main className='container my-10 flex flex-col items-center gap-10 max-sm:p-5 md:my-16'>
           <Outlet />
         </main>
 
