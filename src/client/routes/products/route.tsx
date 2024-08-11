@@ -1,4 +1,4 @@
-import { productsPaginationQueryOptions } from '@/client/modules/products/queryOptions/products.query_options'
+import { productsPaginationQueryOptions } from '@/client/modules/products/queries/products.queries'
 import { createFileRoute, SearchSchemaInput } from '@tanstack/react-router'
 
 interface ProductSearch {
