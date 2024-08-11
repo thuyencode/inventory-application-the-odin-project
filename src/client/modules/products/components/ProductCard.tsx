@@ -1,4 +1,5 @@
 import { Product } from '@/shared/types'
+import { capitalize } from '../utils'
 
 interface ProductCardProps {
   product: Product
@@ -8,7 +9,7 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <div
       className='card card-bordered tooltip card-compact w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'
-      data-tip={product.name}
+      data-tip={capitalize(product.name)}
     >
       <figure className='!justify-between gap-5 border-b border-base-content/20 p-5 py-3'>
         <img
