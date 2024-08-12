@@ -1,12 +1,17 @@
-import { Link, useLoaderData, useSearch } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
-function ProductsPaginator() {
-  const { page: currentPage = 1 } = useSearch({ from: '/products' })
-  const { pages_count } = useLoaderData({ from: '/products' })
+interface ProductsPaginatorProps {
+  pagesCount: number
+  currentPage: number
+}
 
+function ProductsPaginator({
+  pagesCount,
+  currentPage
+}: ProductsPaginatorProps) {
   return (
     <div className='join border border-base-content/50'>
-      {Array.from({ length: pages_count }, (_, index) => {
+      {Array.from({ length: pagesCount }, (_, index) => {
         const page = index + 1
 
         return (

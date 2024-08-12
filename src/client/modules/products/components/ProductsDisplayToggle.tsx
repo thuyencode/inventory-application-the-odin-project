@@ -1,20 +1,24 @@
 import { Icon } from '@iconify/react'
-import { Link, useSearch } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
+import { DisplayType } from '../types'
 
-function ProductsDisplayToggle() {
-  const { display } = useSearch({ from: '/products' })
+interface ProductsDisplayToggleProps {
+  display?: DisplayType
+}
 
+function ProductsDisplayToggle({
+  display = 'card'
+}: ProductsDisplayToggleProps) {
   return (
     <div className='join'>
       <Link
-        className={`btn join-item btn-sm ${display !== 'table' ? 'btn-secondary' : ''}`}
+        className={`btn join-item btn-sm ${display === 'card' ? 'btn-secondary' : ''}`}
         search={(prev) => ({ ...prev, display: 'card' })}
         aria-description='Show in cards list'
         tabIndex={0}
       >
         <Icon className='text-xl' icon={'mdi:card-text-outline'} />
       </Link>
-
       <Link
         className={`btn join-item btn-sm ${display === 'table' ? 'btn-secondary' : ''} `}
         search={(prev) => ({ ...prev, display: 'table' })}

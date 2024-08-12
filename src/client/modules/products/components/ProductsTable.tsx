@@ -1,8 +1,10 @@
-import { useLoaderData } from '@tanstack/react-router'
+import { Product } from '@/shared/types'
 
-function ProductsTable() {
-  const { products } = useLoaderData({ from: '/products' })
+interface ProductsTableProps {
+  products: Product[]
+}
 
+function ProductsTable({ products }: ProductsTableProps) {
   return (
     <>
       <small className='-my-5 text-center sm:hidden'>
@@ -23,7 +25,6 @@ function ProductsTable() {
               <th>Stock</th>
             </tr>
           </thead>
-
           <tbody className='capitalize'>
             {products.map((product) => (
               <tr key={`${product.name}-${product.id}`}>
