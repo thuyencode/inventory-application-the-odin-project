@@ -32,7 +32,8 @@ export async function selectProducts(
     const { rows }: { rows: Product[] } = await pool.query(
       `SELECT product.*, category.name AS category_name
       FROM product
-      JOIN category ON product.category_id = category.id`
+      JOIN category ON product.category_id = category.id
+      ORDER BY product.id`
     )
 
     return rows
@@ -43,7 +44,9 @@ export async function selectProducts(
   const { rows }: { rows: Product[] } = await pool.query(
     `SELECT product.*, category.name AS category_name
     FROM product
-    JOIN category ON product.category_id = category.id LIMIT $1 OFFSET $2`,
+    JOIN category ON product.category_id = category.id
+    ORDER BY product.id
+    LIMIT $1 OFFSET $2`,
     [limit, offset]
   )
 

@@ -14,7 +14,9 @@ SELECT
   category.name AS category_name
 FROM
   product
-  JOIN category ON product.category_id = category.id;
+  JOIN category ON product.category_id = category.id
+ORDER BY
+  product.id;
 
 -- Example: Select all products belongs to the category 'groceries'
 SELECT
