@@ -1,11 +1,9 @@
-import { Product } from '@/shared/types'
+import { useLoaderData } from '@tanstack/react-router'
 import ProductCard from './ProductCard'
 
-interface ProductsListProps {
-  products: Product[]
-}
+function ProductsList() {
+  const { products } = useLoaderData({ from: '/products' })
 
-function ProductsList({ products }: ProductsListProps) {
   return (
     <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
       {products.map((product) => (
