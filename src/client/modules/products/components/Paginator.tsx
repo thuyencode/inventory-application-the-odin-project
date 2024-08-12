@@ -9,7 +9,7 @@ function Paginator({ pagesCount, currentPage }: Paginator) {
   const navigate = useNavigate()
 
   return (
-    <div className='join'>
+    <div className='join border border-base-content/50'>
       {Array.from({ length: pagesCount }, (_, index) => {
         const page = index + 1
 
