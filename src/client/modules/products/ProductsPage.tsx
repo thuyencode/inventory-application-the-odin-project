@@ -1,14 +1,16 @@
 import { useLoaderData, useSearch } from '@tanstack/react-router'
+import DisplayToggle from './components/DisplayTypeToggle'
 import Paginator from './components/Paginator'
-import ProductsList from './components/ProductsList'
+import ProductsDisplay from './components/ProductsDisplay'
 
 function ProductsPage() {
-  const { page } = useSearch({ from: '/products' })
+  const { page, display } = useSearch({ from: '/products' })
   const { products, pages_count } = useLoaderData({ from: '/products' })
 
   return (
     <>
-      <ProductsList products={products} />
+      <DisplayToggle display={display} />
+      <ProductsDisplay display={display} products={products} />
       <Paginator pagesCount={pages_count} currentPage={page ?? 1} />
     </>
   )

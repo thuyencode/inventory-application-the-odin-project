@@ -24,32 +24,36 @@ function ProductCard({ product }: ProductCardProps) {
 
       <div className='card-body bg-base-200 !py-2'>
         <table>
-          <tr>
-            <th className='text-start font-normal'>Category</th>
-            <td className='text-end font-medium capitalize'>
-              {product.category_name}
-            </td>
-          </tr>
-          <tr>
-            <th className='text-start font-normal'>Brand</th>
-            <td className='text-end font-medium capitalize'>{product.brand}</td>
-          </tr>
-          <tr>
-            <th className='text-start font-normal'>Stock</th>
-            <td className='text-end font-medium'>{product.stock}</td>
-          </tr>
-          <tr>
-            <th className='text-start font-normal'>Price</th>
-            <td className='text-end font-medium'>${product.price}</td>
-          </tr>
-          <tr>
-            <th className='text-start font-normal'>Weight</th>
-            <td className='text-end font-medium'>{product.weight}</td>
-          </tr>
-          <tr>
-            <th className='text-start font-normal'>SKU</th>
-            <td className='text-end font-medium'>{product.sku}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th className='text-start font-normal'>Category</th>
+              <td className='text-end font-medium capitalize'>
+                {product.category_name}
+              </td>
+            </tr>
+            <tr>
+              <th className='text-start font-normal'>Brand</th>
+              <td className='text-end font-medium capitalize'>
+                {product.brand}
+              </td>
+            </tr>
+            <tr>
+              <th className='text-start font-normal'>Stock</th>
+              <td className='text-end font-medium'>{product.stock}</td>
+            </tr>
+            <tr>
+              <th className='text-start font-normal'>Price</th>
+              <td className='text-end font-medium'>${product.price}</td>
+            </tr>
+            <tr>
+              <th className='text-start font-normal'>Weight</th>
+              <td className='text-end font-medium'>{product.weight}</td>
+            </tr>
+            <tr>
+              <th className='text-start font-normal'>SKU</th>
+              <td className='text-end font-medium'>{product.sku}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

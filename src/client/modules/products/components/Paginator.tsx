@@ -1,4 +1,4 @@
-import { useNavigate } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 
 interface Paginator {
   pagesCount: number
@@ -6,25 +6,20 @@ interface Paginator {
 }
 
 function Paginator({ pagesCount, currentPage }: Paginator) {
-  const navigate = useNavigate()
-
   return (
     <div className='join border border-base-content/50'>
       {Array.from({ length: pagesCount }, (_, index) => {
         const page = index + 1
 
         return (
-          <input
-            key={`paginator-${page}`}
-            className='btn btn-square join-item'
-            type='radio'
-            name='options'
-            aria-label={`${page}`}
-            defaultChecked={page === currentPage}
-            onClick={() => {
-              navigate({ search: { page } })
-            }}
-          />
+          <Link
+            key={`pag-product-${page}`}
+            className={`btn join-item px-5 ${page === currentPage ? 'btn-primary' : ''}`}
+            search={(prev) => ({ ...prev, page })}
+            aria-description='Show in cards list'
+          >
+            {page}
+          </Link>
         )
       })}
     </div>

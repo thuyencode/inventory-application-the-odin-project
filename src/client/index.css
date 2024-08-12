@@ -27,4 +27,12 @@
   .icon-wrapper {
     @apply inline-flex items-center gap-1;
   }
+
+  .table-light th {
+    @apply font-light;
+  }
+
+  .table-light .table-row-id {
+    @apply font-medium;
+  }
 }
