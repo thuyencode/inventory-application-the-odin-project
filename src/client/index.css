@@ -28,11 +28,27 @@
     @apply inline-flex items-center gap-1;
   }
 
-  .table-light th {
+  .products-table td {
     @apply font-light;
   }
 
-  .table-light .table-row-id {
+  .products-table td:nth-child(1) {
     @apply font-medium;
+  }
+
+  .products-table tr :nth-child(3),
+  .products-table tr :nth-child(4),
+  .products-table tr :nth-child(5),
+  .products-table tr :nth-child(6),
+  .products-table tr :nth-child(7) {
+    @apply max-sm:hidden;
+  }
+
+  .product-card tr :first-child {
+    @apply text-start font-light;
+  }
+
+  .product-card tr :last-child {
+    @apply text-end;
   }
 }

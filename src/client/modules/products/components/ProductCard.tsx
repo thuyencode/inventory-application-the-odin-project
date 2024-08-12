@@ -8,8 +8,9 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
   return (
     <div
-      className='card card-bordered tooltip card-compact w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'
+      className='product-card card card-bordered tooltip card-compact w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'
       data-tip={capitalize(product.name)}
+      tabIndex={0}
     >
       <figure className='!justify-between gap-5 border-b border-base-content/20 p-5 py-3'>
         <img
@@ -24,34 +25,30 @@ function ProductCard({ product }: ProductCardProps) {
 
       <div className='card-body bg-base-200 !py-2'>
         <table>
-          <tbody>
+          <tbody className='capitalize'>
             <tr>
-              <th className='text-start font-normal'>Category</th>
-              <td className='text-end font-medium capitalize'>
-                {product.category_name}
-              </td>
+              <th>Category</th>
+              <td>{product.category_name}</td>
             </tr>
             <tr>
-              <th className='text-start font-normal'>Brand</th>
-              <td className='text-end font-medium capitalize'>
-                {product.brand}
-              </td>
+              <th>Brand</th>
+              <td>{product.brand}</td>
             </tr>
             <tr>
-              <th className='text-start font-normal'>Stock</th>
-              <td className='text-end font-medium'>{product.stock}</td>
+              <th>Stock</th>
+              <td>{product.stock}</td>
             </tr>
             <tr>
-              <th className='text-start font-normal'>Price</th>
-              <td className='text-end font-medium'>${product.price}</td>
+              <th>Price</th>
+              <td>${product.price}</td>
             </tr>
             <tr>
-              <th className='text-start font-normal'>Weight</th>
-              <td className='text-end font-medium'>{product.weight}</td>
+              <th>Weight</th>
+              <td>{product.weight}</td>
             </tr>
             <tr>
-              <th className='text-start font-normal'>SKU</th>
-              <td className='text-end font-medium'>{product.sku}</td>
+              <th>SKU</th>
+              <td>{product.sku}</td>
             </tr>
           </tbody>
         </table>

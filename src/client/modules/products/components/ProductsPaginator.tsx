@@ -1,11 +1,14 @@
 import { Link } from '@tanstack/react-router'
 
-interface Paginator {
+interface ProductsPaginatorProps {
   pagesCount: number
   currentPage: number
 }
 
-function Paginator({ pagesCount, currentPage }: Paginator) {
+function ProductsPaginator({
+  pagesCount,
+  currentPage
+}: ProductsPaginatorProps) {
   return (
     <div className='join border border-base-content/50'>
       {Array.from({ length: pagesCount }, (_, index) => {
@@ -17,6 +20,7 @@ function Paginator({ pagesCount, currentPage }: Paginator) {
             className={`btn join-item px-5 ${page === currentPage ? 'btn-primary' : ''}`}
             search={(prev) => ({ ...prev, page })}
             aria-description='Show in cards list'
+            tabIndex={0}
           >
             {page}
           </Link>
@@ -26,4 +30,4 @@ function Paginator({ pagesCount, currentPage }: Paginator) {
   )
 }
 
-export default Paginator
+export default ProductsPaginator

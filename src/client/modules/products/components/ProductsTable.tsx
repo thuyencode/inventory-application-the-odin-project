@@ -12,32 +12,30 @@ function ProductsTable({ products }: ProductsTableProps) {
       </small>
 
       <div className='w-full overflow-x-auto'>
-        <table className='table-light table table-zebra'>
+        <table className='products-table table table-zebra'>
           <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th className='max-sm:hidden'>Category</th>
-              <th className='max-sm:hidden'>Brand</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Price</th>
+              <th>Weight</th>
+              <th>SKU</th>
               <th>Stock</th>
-              <th className='max-sm:hidden'>Price</th>
-              <th className='max-sm:hidden'>Weight</th>
-              <th className='max-sm:hidden'>SKU</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='capitalize'>
             {products.map((product) => (
               <tr key={`${product.name}-${product.id}`}>
-                <th className='table-row-id'>{product.id}</th>
-                <th className='capitalize'>{product.name}</th>
-                <th className='capitalize max-sm:hidden'>
-                  {product.category_name}
-                </th>
-                <th className='capitalize max-sm:hidden'>{product.brand}</th>
-                <th>{product.stock}</th>
-                <th className='max-sm:hidden'>${product.price}</th>
-                <th className='max-sm:hidden'>{product.weight}</th>
-                <th className='max-sm:hidden'>{product.sku}</th>
+                <td tabIndex={0}>{product.id}</td>
+                <td tabIndex={0}>{product.name}</td>
+                <td tabIndex={0}>{product.category_name}</td>
+                <td tabIndex={product.brand ? 0 : -1}>{product.brand}</td>
+                <td tabIndex={0}>${product.price}</td>
+                <td tabIndex={0}>{product.weight}</td>
+                <td tabIndex={0}>{product.sku}</td>
+                <td tabIndex={0}>{product.stock}</td>
               </tr>
             ))}
           </tbody>
