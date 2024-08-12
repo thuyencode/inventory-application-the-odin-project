@@ -1,10 +1,6 @@
-import { Product } from '@/shared/types'
+import { ProductComponentProps } from '../types'
 
-interface ProductsTableProps {
-  products: Product[]
-}
-
-function ProductsTable({ products }: ProductsTableProps) {
+function ProductsTable({ products }: Omit<ProductComponentProps, 'display'>) {
   return (
     <>
       <small className='-my-5 text-center sm:hidden'>

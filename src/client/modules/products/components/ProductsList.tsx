@@ -1,11 +1,7 @@
-import { Product } from '@/shared/types'
+import { ProductComponentProps } from '../types'
 import ProductCard from './ProductCard'
 
-interface ProductsListProps {
-  products: Product[]
-}
-
-function ProductsList({ products }: ProductsListProps) {
+function ProductsList({ products }: Omit<ProductComponentProps, 'display'>) {
   return (
     <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
       {products.map((product) => (

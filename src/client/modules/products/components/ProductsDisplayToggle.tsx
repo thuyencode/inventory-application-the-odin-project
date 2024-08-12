@@ -1,14 +1,10 @@
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
-import { DisplayType } from '../types'
-
-interface ProductsDisplayToggleProps {
-  display?: DisplayType
-}
+import { ProductComponentProps } from '../types'
 
 function ProductsDisplayToggle({
   display = 'card'
-}: ProductsDisplayToggleProps) {
+}: Omit<ProductComponentProps, 'products'>) {
   return (
     <div className='join'>
       <Link

@@ -1,17 +1,11 @@
-import { Product } from '@/shared/types'
-import { DisplayType } from '../types'
+import { ProductComponentProps } from '../types'
 import ProductsList from './ProductsList'
 import ProductsTable from './ProductsTable'
-
-interface DisplayTypeToggleProps {
-  display?: DisplayType
-  products: Product[]
-}
 
 function ProductsDisplay({
   display = 'card',
   products
-}: DisplayTypeToggleProps) {
+}: ProductComponentProps) {
   switch (display) {
     case 'card':
       return <ProductsList products={products} />
