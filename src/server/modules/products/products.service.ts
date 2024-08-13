@@ -7,12 +7,6 @@ import type { Product, SelectProductsDefaultLimitOptions } from '@/shared/types'
 
 const LIMIT = 10
 
-export async function getProducts(): Promise<Product[]>
-
-export async function getProducts(
-  options: SelectProductsDefaultLimitOptions
-): Promise<Product[]>
-
 export async function getProducts(
   options?: SelectProductsDefaultLimitOptions
 ): Promise<Product[]> {

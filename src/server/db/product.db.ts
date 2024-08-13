@@ -6,22 +6,9 @@ import pool from './pool.db'
  *
  * @export
  * @async
- * @returns {Promise<Product[]>}
- */
-export async function selectProducts(): Promise<Product[]>
-
-/**
- * Select all rows from the `product` table.
- *
- * @export
- * @async
  * @param {SelectProductsOptions} options
  * @returns {Promise<Product[]>}
  */
-export async function selectProducts(
-  options: SelectProductsOptions
-): Promise<Product[]>
-
 export async function selectProducts(
   options?: SelectProductsOptions
 ): Promise<Product[]> {
