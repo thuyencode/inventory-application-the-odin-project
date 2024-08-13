@@ -1,3 +1,15 @@
+import * as v from 'valibot'
+import {
+  SelectProductsDefaultLimitSchema,
+  SelectProductsSchema
+} from '../schemas/select-products.schema'
+
+export type SelectProductsOptions = v.InferInput<typeof SelectProductsSchema>
+
+export type SelectProductsDefaultLimitOptions = v.InferInput<
+  typeof SelectProductsDefaultLimitSchema
+>
+
 export interface Category {
   id: number
   create_time: Date

@@ -1,47 +1,45 @@
 import { NotFound } from '@/server/errors'
 import BadRequest from '@/server/errors/BadRequest'
+import { SelectProductsDefaultLimitSchema } from '@/shared/schemas/select-products.schema'
 import { Product } from '@/shared/types'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
-import {
-  getPagesCount,
-  getProductById,
-  getProducts,
-  getProductsPagination
-} from './products.service'
+import { isEmpty } from 'lodash-es'
+import * as v from 'valibot'
+import { getPagesCount, getProductById, getProducts } from './products.service'
 
 export const handleProductsApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
-    let products: Product[]
-    let next: string | undefined
+    try {
+      let products: Product[]
+      let pages_count: number | undefined
+      let next: string | undefined
 
-    const queryString = req.query.page
+      if (isEmpty(req.query)) {
+        products = await getProducts()
+      } else {
+        const options = v.parse(SelectProductsDefaultLimitSchema, {
+          ...req.query,
+          page: req.query.page ? Number(req.query.page) : undefined
+        })
 
-    const pages_count = await getPagesCount()
+        pages_count = await getPagesCount()
 
-    if (queryString === undefined) {
-      products = await getProducts()
-    } else {
-      const page = Number(queryString)
+        if (options.page !== undefined && options.page < pages_count) {
+          next = `${req.baseUrl}?page=${options.page + 1}`
+        }
 
-      if (!Number.isInteger(page)) {
-        throw new BadRequest(
-          "The value provided to 'page' must be an integer number"
-        )
+        products = await getProducts(options)
       }
 
-      if (page > pages_count || page < 1) {
-        throw new NotFound()
-      }
+      res.send({ products, pages_count, next })
+    } catch (error) {
+      if (v.isValiError(error)) {
+        const issues = v.flatten(error.issues).nested
 
-      if (page < pages_count) {
-        next = `${req.baseUrl}?page=${page + 1}`
+        throw new BadRequest(issues)
       }
-
-      products = await getProductsPagination(page)
     }
-
-    res.send({ products, pages_count, next })
   }
 )
 

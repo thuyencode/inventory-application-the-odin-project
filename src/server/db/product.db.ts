@@ -1,8 +1,8 @@
-import { Product } from '@/shared/types'
+import { Product, SelectProductsOptions } from '@/shared/types'
 import pool from './pool.db'
 
 /**
- * Select all rows in the `product` table
+ * Select all rows from the `product` table.
  *
  * @export
  * @async
@@ -11,44 +11,40 @@ import pool from './pool.db'
 export async function selectProducts(): Promise<Product[]>
 
 /**
- * Select a part of rows in the `product` table
+ * Select all rows from the `product` table.
  *
  * @export
  * @async
- * @param {number} limit
- * @param {?number} [page]
+ * @param {SelectProductsOptions} options
  * @returns {Promise<Product[]>}
  */
 export async function selectProducts(
-  limit: number,
-  page?: number
+  options: SelectProductsOptions
 ): Promise<Product[]>
 
 export async function selectProducts(
-  limit?: number,
-  page: number = 1
+  options?: SelectProductsOptions
 ): Promise<Product[]> {
-  if (typeof limit === 'undefined') {
-    const { rows }: { rows: Product[] } = await pool.query(
-      `SELECT product.*, category.name AS category_name
-      FROM product
-      JOIN category ON product.category_id = category.id
-      ORDER BY product.id`
-    )
+  let sqlQuery = `
+    SELECT product.*, category.name AS category_name
+    FROM product
+    JOIN category ON product.category_id = category.id`
 
-    return rows
+  if (options === undefined) {
+    sqlQuery += ' ORDER BY product.id'
+  } else {
+    const { limit, page, sortBy, orderBy = 'asc' } = options
+
+    sqlQuery += ` ORDER BY product.${sortBy}`
+    sqlQuery += ` ${orderBy.toUpperCase()}`
+
+    if (page !== undefined) {
+      const offset = limit * (page - 1)
+      sqlQuery += ` LIMIT ${limit} OFFSET ${offset}`
+    }
   }
 
-  const offset = page <= 1 ? 0 : limit * (page - 1)
-
-  const { rows }: { rows: Product[] } = await pool.query(
-    `SELECT product.*, category.name AS category_name
-    FROM product
-    JOIN category ON product.category_id = category.id
-    ORDER BY product.id
-    LIMIT $1 OFFSET $2`,
-    [limit, offset]
-  )
+  const { rows }: { rows: Product[] } = await pool.query(sqlQuery)
 
   return rows
 }
