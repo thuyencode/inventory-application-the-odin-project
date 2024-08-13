@@ -10,9 +10,10 @@ export const Route = createFileRoute('/products')({
   }),
   loaderDeps: ({ search }) => ({ ...search }),
   loader: ({ deps, context }) => {
-    const filters = v.parse(ProductSearchSchema, deps)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { display, ...verifiedFilters } = v.parse(ProductSearchSchema, deps)
     const { queryClient } = context
 
-    return queryClient.ensureQueryData(productsQueryFilters(filters))
+    return queryClient.ensureQueryData(productsQueryFilters(verifiedFilters))
   }
 })
