@@ -10,14 +10,14 @@ function ProductsPaginator({
   currentPage
 }: ProductsPaginatorProps) {
   return (
-    <div className='join border border-base-content/50'>
+    <div className='join'>
       {Array.from({ length: pagesCount }, (_, index) => {
         const page = index + 1
 
         return (
           <Link
             key={`pag-product-${page}`}
-            className={`btn join-item px-5 ${page === currentPage ? 'btn-primary' : ''}`}
+            className={`btn btn-outline join-item px-5 ${page === currentPage ? 'btn-active' : ''}`}
             search={(prev) => ({ ...prev, page })}
             aria-description='Show in cards list'
             tabIndex={0}
