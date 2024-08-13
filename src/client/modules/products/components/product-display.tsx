@@ -1,6 +1,6 @@
-import { ProductComponentProps } from '../types'
-import ProductsList from './ProductsList'
-import ProductsTable from './ProductsTable'
+import { ProductComponentProps } from '@/client/types'
+import ProductsList from './products-list'
+import ProductsTable from './products-table'
 
 function ProductsDisplay({
   display = 'card',

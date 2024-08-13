@@ -16,10 +16,10 @@ function ProductsPaginator({
 
         return (
           <Link
-            key={`pag-product-${page}`}
+            key={`go-to-page-${page}`}
             className={`btn btn-outline join-item px-5 ${page === currentPage ? 'btn-active' : ''}`}
             search={(prev) => ({ ...prev, page })}
-            aria-description='Show in cards list'
+            aria-description={`Go to page ${page}`}
             tabIndex={0}
           >
             {page}

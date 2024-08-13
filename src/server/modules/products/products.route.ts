@@ -3,7 +3,7 @@ import { handleProductByIdApi, handleProductsApi } from './products.controller'
 
 const products_routes = e.Router()
 
-// GET /api/products or for example: /api/products/?page=1&sortBy=price&orderBy=desc
+// GET /api/products or for example: /api/products/?page=1&orderBy=price&sortIn=desc
 products_routes.get('/', handleProductsApi)
 
 // GET /api/products/:id

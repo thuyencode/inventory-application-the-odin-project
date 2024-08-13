@@ -1,22 +1,16 @@
-import {
-  getProductById,
-  getProducts,
-  getProductsPagination
-} from '@/client/api/products.api'
+import { getProductById, getProducts } from '@/client/api/products.api'
+import { SelectProductsDefaultLimitOptions } from '@/shared/types'
 import { queryOptions } from '@tanstack/react-query'
 
-export const productsQueryOptions = queryOptions({
-  queryKey: ['products'],
-  queryFn: async ({ signal }) => await getProducts(signal)
-})
-
-export const productsPaginationQueryOptions = (page: number) =>
+export const productsQueryFilters = (
+  filters: SelectProductsDefaultLimitOptions
+) =>
   queryOptions({
-    queryKey: ['products', { page }],
-    queryFn: async ({ signal }) => await getProductsPagination(page, signal)
+    queryKey: ['products', filters],
+    queryFn: async ({ signal }) => await getProducts(signal, filters)
   })
 
-export const productQueryOptions = (productId: number) =>
+export const productQuery = (productId: number) =>
   queryOptions({
     queryKey: ['products', productId],
     queryFn: async ({ signal }) => await getProductById(productId, signal)

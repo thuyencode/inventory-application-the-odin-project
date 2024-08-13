@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "dotenvx run -f .env.development.local -- nodemon -w src/server -x tsx src/server/main.ts",
     "start": "dotenvx run -f .env.production.local -- tsx src/server/main.ts",
-    "build": "vite build",
+    "build": "tsc & vite build",
     "populate-db:dev": "dotenvx run -f .env.development.local -- tsx scripts/populate_db.ts",
     "populate-db:prod": "dotenvx run -f .env.production.local -- tsx scripts/populate_db.ts"
   },

@@ -1,3 +1,3 @@
-export const SORT_BY = ['id', 'price', 'weight', 'stock']
+export const ORDER_BY = ['id', 'price', 'weight', 'stock'] as const
 
-export const ORDER_BY = ['asc', 'desc']
+export const SORT_IN = ['asc', 'desc'] as const

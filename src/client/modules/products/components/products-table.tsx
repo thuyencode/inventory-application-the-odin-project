@@ -1,4 +1,4 @@
-import { ProductComponentProps } from '../types'
+import { ProductComponentProps } from '@/client/types'
 
 function ProductsTable({ products }: Omit<ProductComponentProps, 'display'>) {
   return (

@@ -1,4 +1,4 @@
-import { Product } from '@/shared/types'
+import { Product, SelectProductsDefaultLimitOptions } from '@/shared/types'
 import { ProductsResponse } from '../types'
 import baseApi from './baseApi'
 
@@ -7,37 +7,49 @@ const productsApi = baseApi.extend((options) => ({
 }))
 
 /**
- * Get response from `/api/products`.
+ * Get response GET `/api/products`.
  *
  * @export
  * @async
  * @param {?AbortSignal} [signal]
  * @returns {Promise<Omit<ProductsResponse, 'next'>>}
  */
-export async function getProducts(signal?: AbortSignal) {
-  return await productsApi
-    .get('', { signal })
-    .json<Omit<ProductsResponse, 'next'>>()
-}
+export async function getProducts(
+  signal?: AbortSignal
+): Promise<Omit<ProductsResponse, 'next'>>
 
 /**
- * Get response from `/api/products?page=`, which is pagination.
+ * Get response from an URL likes GET `/api/products?page=1&orderBy=price&sortIn=desc`.
  *
  * @export
  * @async
- * @param {number} page
- * @param {?AbortSignal} signal
+ * @param {?AbortSignal} [signal]
+ * @param {?SelectProductsDefaultLimitOptions} [filters]
  * @returns {Promise<ProductsResponse>}
  */
-export async function getProductsPagination(
-  page: number,
-  signal?: AbortSignal
+export async function getProducts(
+  signal?: AbortSignal,
+  filters?: SelectProductsDefaultLimitOptions
+): Promise<ProductsResponse>
+
+export async function getProducts(
+  signal?: AbortSignal,
+  filters?: SelectProductsDefaultLimitOptions
 ) {
+  if (filters === undefined) {
+    return await productsApi
+      .get('', { signal })
+      .json<Omit<ProductsResponse, 'next'>>()
+  }
+
   const searchParams = new URLSearchParams()
-  searchParams.set('page', String(page))
+
+  for (const [key, value] of Object.entries(filters)) {
+    searchParams.set(key, String(value))
+  }
 
   return await productsApi
-    .get('', { searchParams, signal })
+    .get('', { signal, searchParams })
     .json<ProductsResponse>()
 }
 

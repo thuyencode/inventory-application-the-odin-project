@@ -1,24 +1,18 @@
-import { productsPaginationQueryOptions } from '@/client/modules/products/queries/products.queries'
-import { DisplayType } from '@/client/modules/products/types'
+import { productsQueryFilters } from '@/client/modules/products/queries/products.queries'
+import { ProductSearchSchema } from '@/client/modules/products/schemas/product-search.schema'
+import { ProductSearch } from '@/client/types'
 import { createFileRoute, SearchSchemaInput } from '@tanstack/react-router'
-
-interface ProductSearch {
-  page?: number
-  display?: DisplayType
-}
+import * as v from 'valibot'
 
 export const Route = createFileRoute('/products')({
   validateSearch: (search: ProductSearch & SearchSchemaInput) => ({
-    page: search.page,
-    display: search.display
+    ...search
   }),
-  loaderDeps: ({ search }) => ({ page: search.page, display: search.display }),
+  loaderDeps: ({ search }) => ({ ...search }),
   loader: ({ deps, context }) => {
-    const { page } = deps
+    const filters = v.parse(ProductSearchSchema, deps)
     const { queryClient } = context
 
-    return queryClient.ensureQueryData(
-      productsPaginationQueryOptions(page ?? 1)
-    )
+    return queryClient.ensureQueryData(productsQueryFilters(filters))
   }
 })

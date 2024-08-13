@@ -1,11 +1,11 @@
 import * as v from 'valibot'
-import { ORDER_BY, SORT_BY } from '../constants'
+import { ORDER_BY, SORT_IN } from '../constants'
 
 const SelectProductsSchema = v.object({
   limit: v.pipe(v.number(), v.integer(), v.minValue(1)),
-  page: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1))),
-  sortBy: v.optional(v.picklist(SORT_BY), 'id'),
-  orderBy: v.optional(v.picklist(ORDER_BY), 'asc')
+  page: v.optional(v.pipe(v.number(), v.integer(), v.minValue(1)), 1),
+  orderBy: v.optional(v.picklist(ORDER_BY), 'id'),
+  sortIn: v.optional(v.picklist(SORT_IN), 'asc')
 })
 
 const SelectProductsDefaultLimitSchema = v.omit(SelectProductsSchema, ['limit'])

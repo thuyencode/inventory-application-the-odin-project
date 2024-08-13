@@ -11,7 +11,7 @@ function ProductsPage() {
 
   return (
     <>
-      <ProductsFilter display={display} />
+      <ProductsFilter />
       <ProductsDisplay display={display} products={products} />
       <ProductsPaginator pagesCount={pages_count} currentPage={page ?? 1} />
     </>
