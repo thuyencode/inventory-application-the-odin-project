@@ -2,7 +2,7 @@ import { SelectProductsDefaultLimitSchema } from '@/shared/schemas/select-produc
 import * as v from 'valibot'
 import { DISPLAY_TYPE } from '../constants'
 
-export const ProductSearchSchema = v.intersect([
-  v.object({ display: v.optional(v.picklist(DISPLAY_TYPE), 'card') }),
+export const ProductsSearchSchema = v.intersect([
+  v.object({ display: v.optional(v.picklist(DISPLAY_TYPE)) }),
   SelectProductsDefaultLimitSchema
 ])

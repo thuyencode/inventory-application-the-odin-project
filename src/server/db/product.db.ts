@@ -20,10 +20,10 @@ export async function selectProducts(
   if (options === undefined) {
     sqlQuery += ' ORDER BY product.id'
   } else {
-    const { limit, page, orderBy, sortIn = 'asc' } = options
+    const { limit, page = 1, orderBy = 'id', sortIn = 'asc' } = options
 
     sqlQuery += ` ORDER BY product.${orderBy}`
-    sqlQuery += ` ${sortIn}`.toUpperCase()
+    sqlQuery += ` ${sortIn.toUpperCase()}`
 
     if (page !== undefined) {
       const offset = limit * (page - 1)

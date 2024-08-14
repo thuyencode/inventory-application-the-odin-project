@@ -1,6 +1,8 @@
-import { ProductComponentProps } from '@/client/types'
+import { ProductsPageComponentProps } from '@/client/types'
 
-function ProductsTable({ products }: Omit<ProductComponentProps, 'display'>) {
+function ProductsTable({
+  products
+}: Omit<ProductsPageComponentProps, 'display'>) {
   return (
     <>
       <small className='-my-5 text-center sm:hidden'>

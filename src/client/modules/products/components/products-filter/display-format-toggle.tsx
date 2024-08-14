@@ -1,11 +1,11 @@
-import { ProductComponentProps } from '@/client/types'
+import { ProductsPageComponentProps } from '@/client/types'
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
 import { DISPLAY_TYPE } from '../../constants'
 
 function DisplayFormatToggle({
   display = 'card'
-}: Omit<ProductComponentProps, 'products'>) {
+}: Omit<ProductsPageComponentProps, 'products'>) {
   return (
     <div className='join'>
       {DISPLAY_TYPE.map((type) => (

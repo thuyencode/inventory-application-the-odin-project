@@ -1,10 +1,10 @@
 import { NotFound } from '@/server/errors'
 import BadRequest from '@/server/errors/BadRequest'
+import { isEmpty } from '@/server/utils'
 import { SelectProductsDefaultLimitSchema } from '@/shared/schemas/select-products.schema'
 import { Product } from '@/shared/types'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
-import { isEmpty } from 'lodash-es'
 import * as v from 'valibot'
 import { getPagesCount, getProductById, getProducts } from './products.service'
 

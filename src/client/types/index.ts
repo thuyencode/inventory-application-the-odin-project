@@ -1,4 +1,4 @@
-import { ProductSearchSchema } from '@/client/modules/products/schemas/product-search.schema'
+import { ProductsSearchSchema } from '@/client/modules/products/schemas/products-search.schema'
 import { Category, Product } from '@/shared/types'
 import * as v from 'valibot'
 
@@ -12,8 +12,8 @@ export interface CategoriesResponse {
   categories: Category[]
 }
 
-export type ProductSearch = v.InferInput<typeof ProductSearchSchema>
+export type ProductsSearch = v.InferInput<typeof ProductsSearchSchema>
 
-export type ProductComponentProps = {
+export type ProductsPageComponentProps = {
   products: Product[]
-} & Pick<ProductSearch, 'display'>
+} & Pick<ProductsSearch, 'display'>

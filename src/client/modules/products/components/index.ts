@@ -1,4 +1,4 @@
-import ProductsDisplay from './product-display'
+import ProductsDisplay from './products-display'
 import ProductsFilter from './products-filter'
 import ProductsPaginator from './products-paginator'
 

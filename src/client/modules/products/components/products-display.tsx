@@ -1,11 +1,11 @@
-import { ProductComponentProps } from '@/client/types'
+import { ProductsPageComponentProps } from '@/client/types'
 import ProductsList from './products-list'
 import ProductsTable from './products-table'
 
 function ProductsDisplay({
   display = 'card',
   products
-}: ProductComponentProps) {
+}: ProductsPageComponentProps) {
   switch (display) {
     case 'card':
       return <ProductsList products={products} />

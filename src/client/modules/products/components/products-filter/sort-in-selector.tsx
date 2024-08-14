@@ -1,8 +1,8 @@
-import { ProductSearch } from '@/client/types'
+import { ProductsSearch } from '@/client/types'
 import { SORT_IN } from '@/shared/constants'
 import { Link } from '@tanstack/react-router'
 
-function SortInSelector({ sortIn }: Pick<ProductSearch, 'sortIn'>) {
+function SortInSelector({ sortIn }: Pick<ProductsSearch, 'sortIn'>) {
   return (
     <details className='dropdown dropdown-end'>
       <summary className='btn btn-outline btn-sm m-0 capitalize'>

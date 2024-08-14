@@ -1,8 +1,8 @@
-import { ProductSearch } from '@/client/types'
+import { ProductsSearch } from '@/client/types'
 import { ORDER_BY } from '@/shared/constants'
 import { Link } from '@tanstack/react-router'
 
-function OrderBySelector({ orderBy }: Pick<ProductSearch, 'orderBy'>) {
+function OrderBySelector({ orderBy }: Pick<ProductsSearch, 'orderBy'>) {
   return (
     <details className='dropdown dropdown-end'>
       <summary className='btn btn-outline btn-sm m-0 capitalize'>
