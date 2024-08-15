@@ -21,7 +21,7 @@ function ProductCard({ product }: ProductCardProps) {
           decoding='async'
         />
         <figcaption className='flex flex-col items-end'>
-          <span className='truncate'>{product.name}</span>
+          <span className='text-wrap text-end'>{product.name}</span>
           <span className='font-light'>${product.price}</span>
         </figcaption>
       </figure>
