@@ -36,7 +36,7 @@
     @apply font-medium;
   }
 
-  .products-table tr :nth-child(n + 3):not(:nth-child(8)) {
+  .products-table tr :nth-child(n + 3):not(:nth-child(9)) {
     @apply max-sm:hidden;
   }
 
