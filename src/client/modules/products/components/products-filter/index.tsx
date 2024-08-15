@@ -8,9 +8,9 @@ function ProductsFilter() {
 
   return (
     <div className='flex items-center gap-2.5'>
-      <SortInSelector sortIn={sortIn} />
-      <OrderBySelector orderBy={orderBy} />
-      <DisplayFormatToggle display={display} />
+      <SortInSelector currentlySortIn={sortIn} />
+      <OrderBySelector currentlyOrderBy={orderBy} />
+      <DisplayFormatToggle currentlyDisplayIn={display} />
     </div>
   )
 }
