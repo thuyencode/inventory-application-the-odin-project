@@ -7,7 +7,7 @@ function ProductsFilter() {
   const { display, sortIn, orderBy } = useSearch({ from: '/products' })
 
   return (
-    <div className='flex items-center gap-2.5'>
+    <div className='flex flex-wrap items-center justify-center gap-2.5'>
       <SortInSelector currentlySortIn={sortIn} />
       <OrderBySelector currentlyOrderBy={orderBy} />
       <DisplayFormatToggle currentlyDisplayIn={display} />

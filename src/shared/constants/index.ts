@@ -8,8 +8,8 @@ export const SORT_IN = Object.keys(
 ) as (keyof typeof SORT_IN_WITH_ICONS)[]
 
 export const ORDER_BY_WITH_ICONS = {
-  id: 'mdi:number-1',
-  price: 'mdi:attach-money',
+  id: 'mdi:identifier',
+  price: 'mdi:dollar',
   weight: 'mdi:weight-kilogram',
   stock: 'mdi:box-outline',
   created_time: 'mdi:calendar-plus-outline'
