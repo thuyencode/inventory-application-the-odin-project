@@ -1,7 +1,7 @@
 import { ProductsPageComponentProps } from '@/client/types'
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
-import { DISPLAY_TYPE } from '../../constants'
+import { DISPLAY_TYPE, DISPLAY_TYPE_WITH_ICONS } from '../../constants'
 
 function DisplayFormatToggle({
   display = 'card'
@@ -16,10 +16,7 @@ function DisplayFormatToggle({
           tabIndex={0}
           key={type}
         >
-          <Icon
-            className='text-xl'
-            icon={type === 'table' ? 'mdi:table' : 'mdi:card-text-outline'}
-          />
+          <Icon className='text-xl' icon={DISPLAY_TYPE_WITH_ICONS[type]} />
         </Link>
       ))}
     </div>
