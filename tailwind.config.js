@@ -1,5 +1,6 @@
 import daisyui from 'daisyui'
 import daisyuiThemes from 'daisyui/src/theming/themes'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,6 +12,9 @@ export default {
       },
       gridTemplateColumns: {
         ram: 'repeat(auto-fill, minmax(256px, 1fr))'
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans]
       }
     }
   },
