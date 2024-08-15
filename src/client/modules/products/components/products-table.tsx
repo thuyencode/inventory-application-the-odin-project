@@ -35,7 +35,7 @@ function ProductsTable({
                 <td tabIndex={0}>{product.weight}</td>
                 <td tabIndex={0}>{product.sku}</td>
                 <td tabIndex={0}>{product.stock}</td>
-                <td tabIndex={0}>{product.create_time.toLocaleDateString()}</td>
+                <td tabIndex={0}>{product.created_time.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>

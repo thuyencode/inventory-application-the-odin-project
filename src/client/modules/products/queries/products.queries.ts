@@ -14,7 +14,7 @@ export const productsQueryFilters = (
         ...data,
         products: data.products.map((product) => ({
           ...product,
-          create_time: new Date(product.create_time)
+          created_time: new Date(product.created_time)
         }))
       }
     }

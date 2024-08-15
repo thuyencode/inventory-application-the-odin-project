@@ -11,7 +11,8 @@ export const ORDER_BY_WITH_ICONS = {
   id: 'mdi:number-1',
   price: 'mdi:attach-money',
   weight: 'mdi:weight-kilogram',
-  stock: 'mdi:box-outline'
+  stock: 'mdi:box-outline',
+  created_time: 'mdi:calendar-plus-outline'
 } as const
 
 export const ORDER_BY = Object.keys(

@@ -51,7 +51,7 @@ function ProductCard({ product }: ProductCardProps) {
             </tr>
             <tr>
               <th>Added</th>
-              <td>{product.create_time.toLocaleDateString()}</td>
+              <td>{product.created_time.toLocaleString()}</td>
             </tr>
           </tbody>
         </table>

@@ -10,7 +10,7 @@ function SortInSelector({ sortIn }: Pick<ProductsSearch, 'sortIn'>) {
         {sortIn ? `Sort in: ${sortIn}` : 'Sort in'}
       </summary>
 
-      <ul className='menu dropdown-content menu-md z-[1] mt-2.5 w-44 rounded-box border border-base-content/50 bg-base-300 p-2 capitalize shadow'>
+      <ul className='menu dropdown-content menu-md z-[1] mt-2.5 w-min rounded-box border border-base-content/50 bg-base-300 p-2 capitalize shadow'>
         {SORT_IN.map((type) => (
           <li key={type}>
             <Link

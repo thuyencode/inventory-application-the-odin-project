@@ -25,7 +25,7 @@ export async function selectProducts(
     sqlQuery += ` ORDER BY product.${orderBy}`
     sqlQuery += ` ${sortIn.toUpperCase()}`
 
-    if (page !== undefined) {
+    if (page) {
       const offset = limit * (page - 1)
       sqlQuery += ` LIMIT ${limit} OFFSET ${offset}`
     }

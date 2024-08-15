@@ -12,7 +12,7 @@ export type SelectProductsDefaultLimitOptions = v.InferInput<
 
 export interface Category {
   id: number
-  create_time: Date
+  created_time: Date
   name: string
 }
 
