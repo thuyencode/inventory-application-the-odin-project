@@ -21,6 +21,7 @@ function ProductsTable({
               <th>Weight</th>
               <th>SKU</th>
               <th>Stock</th>
+              <th>Added</th>
             </tr>
           </thead>
           <tbody className='capitalize'>
@@ -34,6 +35,7 @@ function ProductsTable({
                 <td tabIndex={0}>{product.weight}</td>
                 <td tabIndex={0}>{product.sku}</td>
                 <td tabIndex={0}>{product.stock}</td>
+                <td tabIndex={0}>{product.create_time.toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>

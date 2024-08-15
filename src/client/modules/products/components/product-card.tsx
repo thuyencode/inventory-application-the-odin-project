@@ -20,7 +20,10 @@ function ProductCard({ product }: ProductCardProps) {
           loading='lazy'
           decoding='async'
         />
-        <figcaption className='truncate font-medium'>{product.name}</figcaption>
+        <figcaption className='flex flex-col items-end'>
+          <span className='truncate'>{product.name}</span>
+          <span className='font-light'>${product.price}</span>
+        </figcaption>
       </figure>
 
       <div className='card-body bg-base-200 !py-2'>
@@ -39,16 +42,16 @@ function ProductCard({ product }: ProductCardProps) {
               <td>{product.stock}</td>
             </tr>
             <tr>
-              <th>Price</th>
-              <td>${product.price}</td>
-            </tr>
-            <tr>
               <th>Weight</th>
               <td>{product.weight}</td>
             </tr>
             <tr>
               <th>SKU</th>
               <td>{product.sku}</td>
+            </tr>
+            <tr>
+              <th>Added</th>
+              <td>{product.create_time.toLocaleDateString()}</td>
             </tr>
           </tbody>
         </table>

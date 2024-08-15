@@ -7,7 +7,17 @@ export const productsQueryFilters = (
 ) =>
   queryOptions({
     queryKey: ['products', filters],
-    queryFn: async ({ signal }) => await getProducts(signal, filters)
+    queryFn: async ({ signal }) => {
+      const data = await getProducts(signal, filters)
+
+      return {
+        ...data,
+        products: data.products.map((product) => ({
+          ...product,
+          create_time: new Date(product.create_time)
+        }))
+      }
+    }
   })
 
 export const productQuery = (productId: number) =>
