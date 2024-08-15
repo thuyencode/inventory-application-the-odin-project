@@ -18,7 +18,7 @@ function SortInSelector({ sortIn }: Pick<ProductsSearch, 'sortIn'>) {
               aria-description={`Sort in: ${type}`}
               tabIndex={0}
             >
-              {`${type}ing`}
+              {`${type}ending`}
             </Link>
           </li>
         ))}
