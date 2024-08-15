@@ -20,7 +20,7 @@ export async function selectProducts(
   if (options === undefined) {
     sqlQuery += ' ORDER BY product.id'
   } else {
-    const { limit, page = 1, orderBy = 'id', sortIn = 'asc' } = options
+    const { limit, page, orderBy = 'id', sortIn = 'asc' } = options
 
     sqlQuery += ` ORDER BY product.${orderBy}`
     sqlQuery += ` ${sortIn.toUpperCase()}`

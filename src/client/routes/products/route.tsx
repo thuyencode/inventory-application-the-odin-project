@@ -10,9 +10,11 @@ export const Route = createFileRoute('/products')({
   loaderDeps: ({ search }) => search,
   loader: ({ deps, context }) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { display, ...filters } = deps
+    const { display, page = 1, ...filters } = deps
     const { queryClient } = context
 
-    return queryClient.ensureQueryData(productsQueryFilters(filters))
+    return queryClient.ensureQueryData(
+      productsQueryFilters({ ...filters, page })
+    )
   }
 })
