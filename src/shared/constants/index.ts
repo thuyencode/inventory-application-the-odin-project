@@ -1,4 +1,4 @@
-export const PORT = Number(import.meta.env.PORT || 8080)
+export const PORT = 8080
 
 export const SORT_IN_WITH_ICONS = {
   asc: 'mdi:order-numeric-ascending',
