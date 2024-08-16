@@ -1,3 +1,4 @@
+import { PORT } from '@/shared/constants'
 import compression from 'compression'
 import e from 'express'
 import ViteExpress from 'vite-express'
@@ -20,8 +21,6 @@ app.use('/api/categories', categories_routes)
 
 // Error catcher
 app.use(error_handler)
-
-const PORT = Number(process.env.PORT || 8080)
 
 ViteExpress.listen(app, PORT, () =>
   console.log(`Server is listening on port ${PORT}...`)
