@@ -65,7 +65,7 @@ export async function selectProductById(
  */
 export async function selectPagesCount(limit: number): Promise<number> {
   const { rows } = await pool.query(
-    'SELECT CEIL(COUNT(*) / $1::float) AS pages_count FROM category',
+    'SELECT CEIL(COUNT(*) / $1::float) AS pages_count FROM product',
     [limit]
   )
 

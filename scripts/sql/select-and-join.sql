@@ -27,3 +27,8 @@ FROM
   JOIN category ON product.category_id = category.id
 WHERE
   category.name LIKE 'groceries';
+
+SELECT
+  CEIL(COUNT(*) / 10.0) AS pages_count
+FROM
+  product
