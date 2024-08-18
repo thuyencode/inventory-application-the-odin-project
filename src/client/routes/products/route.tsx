@@ -1,5 +1,5 @@
-import { productsQueryFilters } from '@/client/modules/products/queries/products.queries'
 import { ProductsSearchSchema } from '@/client/modules/products/schemas/products-search.schema'
+import { productsQueryFilters } from '@/client/queries/products.queries'
 import { ProductsSearch } from '@/client/types'
 import { createFileRoute, SearchSchemaInput } from '@tanstack/react-router'
 import * as v from 'valibot'

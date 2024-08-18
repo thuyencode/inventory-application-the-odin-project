@@ -48,7 +48,10 @@ export async function selectProductById(
   id: number
 ): Promise<Product | undefined> {
   const { rows }: { rows: Product[] } = await pool.query(
-    'SELECT * FROM product WHERE id = $1',
+    `SELECT product.*, category.name AS category_name
+    FROM product
+    JOIN category ON product.category_id = category.id
+    WHERE product.id = $1`,
     [id]
   )
 

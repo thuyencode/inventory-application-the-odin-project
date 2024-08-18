@@ -1,5 +1,9 @@
 import { QueryClient } from '@tanstack/react-query'
-import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
+import {
+  createRootRouteWithContext,
+  Outlet,
+  ScrollRestoration
+} from '@tanstack/react-router'
 import { Suspense } from 'react'
 import TanStackRouterDevtools from '../components/dev-mode-only/TanStackRouterDevtools'
 import Footer from '../components/layout/footer'
@@ -16,6 +20,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         </main>
 
         <Footer />
+
+        <ScrollRestoration />
 
         <Suspense>
           <TanStackRouterDevtools />
