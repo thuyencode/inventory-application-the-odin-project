@@ -15,7 +15,8 @@
   h4 {
     @apply text-xl font-medium;
   }
-  p {
+  p,
+  span {
     @apply text-lg;
   }
   * {

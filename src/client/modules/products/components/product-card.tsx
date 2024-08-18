@@ -1,4 +1,5 @@
 import { Product } from '@/shared/types'
+import { Link } from '@tanstack/react-router'
 import { capitalize } from '../utils'
 
 interface ProductCardProps {
@@ -7,8 +8,10 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <div
+    <Link
       className='product-card card card-bordered tooltip card-compact w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'
+      to='/products/$productId'
+      params={{ productId: String(product.id) }}
       data-tip={capitalize(product.name)}
       tabIndex={0}
     >
@@ -56,7 +59,7 @@ function ProductCard({ product }: ProductCardProps) {
           </tbody>
         </table>
       </div>
-    </div>
+    </Link>
   )
 }
 

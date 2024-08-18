@@ -23,5 +23,9 @@ export const productsQueryFilters = (
 export const productQuery = (productId: number) =>
   queryOptions({
     queryKey: ['products', productId],
-    queryFn: async ({ signal }) => await getProductById(productId, signal)
+    queryFn: async ({ signal }) => {
+      const data = await getProductById(productId, signal)
+
+      return { ...data, created_time: new Date(data.created_time) }
+    }
   })
