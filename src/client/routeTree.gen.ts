@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ProductsRouteImport } from './routes/products/route'
+import { Route as ProductsNewRouteImport } from './routes/products/new/route'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId/route'
 
 // Create Virtual Routes
@@ -46,6 +47,13 @@ const ProductsIndexLazyRoute = ProductsIndexLazyImport.update({
   getParentRoute: () => ProductsRouteRoute,
 } as any).lazy(() =>
   import('./routes/products/index.lazy').then((d) => d.Route),
+)
+
+const ProductsNewRouteRoute = ProductsNewRouteImport.update({
+  path: '/new',
+  getParentRoute: () => ProductsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/products/new/route.lazy').then((d) => d.Route),
 )
 
 const ProductsProductIdRouteRoute = ProductsProductIdRouteImport.update({
@@ -87,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof ProductsRouteImport
     }
+    '/products/new': {
+      id: '/products/new'
+      path: '/new'
+      fullPath: '/products/new'
+      preLoaderRoute: typeof ProductsNewRouteImport
+      parentRoute: typeof ProductsRouteImport
+    }
     '/products/': {
       id: '/products/'
       path: '/'
@@ -103,6 +118,7 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   ProductsRouteRoute: ProductsRouteRoute.addChildren({
     ProductsProductIdRouteRoute,
+    ProductsNewRouteRoute,
     ProductsIndexLazyRoute,
   }),
   CategoriesLazyRoute,
@@ -128,6 +144,7 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "products/route.tsx",
       "children": [
         "/products/$productId",
+        "/products/new",
         "/products/"
       ]
     },
@@ -136,6 +153,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/products/$productId": {
       "filePath": "products/$productId/route.tsx",
+      "parent": "/products"
+    },
+    "/products/new": {
+      "filePath": "products/new/route.tsx",
       "parent": "/products"
     },
     "/products/": {

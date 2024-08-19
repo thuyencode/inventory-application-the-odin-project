@@ -8,7 +8,7 @@ function Navbar() {
       <div className='navbar-start max-md:order-last max-md:mr-5 max-md:justify-end'>
         <h3
           className='icon-wrapper'
-          aria-description='Title: The Fake Inventory'
+          aria-description='Name: The Fake Inventory'
         >
           The Fake
           <Icon className='ml-1 text-3xl' icon={'mdi:warehouse'} />

@@ -69,7 +69,7 @@ FROM
 function getProductsToBeInserted() {
   return products.products.reduce<Array<unknown[]>>(
     (acc, product) => {
-      acc[0].push(product.title)
+      acc[0].push(product.name)
       acc[1].push(product.description)
       acc[2].push(product.price)
       acc[3].push(product.stock)

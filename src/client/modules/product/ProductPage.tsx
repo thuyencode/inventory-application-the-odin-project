@@ -27,7 +27,7 @@ function ProductPage() {
         <div className='card-body flex-1 gap-5 py-0 pr-0 font-light max-md:p-0'>
           <div className='card-actions flex-col'>
             <p className='capitalize'>
-              <span className='font-medium'>Title:</span> {product.name}
+              <span className='font-medium'>Name:</span> {product.name}
             </p>
             <p>
               <span className='font-medium'>Price:</span> ${product.price}
