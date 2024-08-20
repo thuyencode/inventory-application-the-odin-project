@@ -1,25 +1,27 @@
-import { Product } from '@/shared/types'
+import { SubmittedProductSchema } from '@/shared/types'
 import { useForm } from '@tanstack/react-form'
-import { useLoaderData } from '@tanstack/react-router'
+import { useLoaderData, useRouter } from '@tanstack/react-router'
 
 function AddNewProductPage() {
+  const router = useRouter()
   const { categories } = useLoaderData({ from: '/products/new' })
 
-  const form = useForm<Omit<Product, 'category_name' | 'id' | 'created_time'>>({
+  const form = useForm<SubmittedProductSchema>({
     defaultValues: {
       name: '',
-      description: '',
+      description: undefined,
       price: 0,
       stock: 0,
-      brand: '',
+      brand: undefined,
       sku: '',
       weight: 0,
       category_id: 1,
-      image_url: ''
+      image_url: undefined
     },
     onSubmit: async ({ value }) => {
       // Do something with form data
       console.log(value)
+      router.invalidate()
     }
   })
 
