@@ -19,14 +19,4 @@ export interface Category {
   name: string
 }
 
-export type Product = {
-  description?: string
-  price: number
-  stock: number
-  brand?: string
-  sku: string
-  weight: number
-  category_id: number
-  image_url: string
-  category_name: string
-} & Category
+export type Product = { category_name: string } & SubmittedProduct & Category

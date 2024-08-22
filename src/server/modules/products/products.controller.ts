@@ -1,12 +1,18 @@
-import { NotFound } from '@/server/errors'
+import { InternalServerError, NotFound } from '@/server/errors'
 import BadRequest from '@/server/errors/BadRequest'
 import { isEmpty } from '@/server/utils'
 import { SelectProductsDefaultLimitSchema } from '@/shared/schemas/select-products.schema'
+import { SubmittedProductSchema } from '@/shared/schemas/submit-product.schema'
 import { Product } from '@/shared/types'
 import type e from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import * as v from 'valibot'
-import { getPagesCount, getProductById, getProducts } from './products.service'
+import {
+  addNewProduct,
+  getPagesCount,
+  getProductById,
+  getProducts
+} from './products.service'
 
 export const handleProductsApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
@@ -58,5 +64,29 @@ export const handleProductByIdApi = expressAsyncHandler(
     }
 
     res.send(product)
+  }
+)
+
+export const handleSubmittedProduct = expressAsyncHandler(
+  async (req: e.Request, res: e.Response) => {
+    try {
+      const submittedProduct = v.parse(SubmittedProductSchema, req.body)
+
+      const newProduct = await addNewProduct(submittedProduct)
+
+      if (newProduct instanceof Error) {
+        throw new InternalServerError(newProduct)
+      }
+
+      res.json(newProduct)
+    } catch (error) {
+      if (v.isValiError(error)) {
+        const issues = v.flatten(error.issues).nested
+
+        throw new BadRequest(issues)
+      } else {
+        throw error
+      }
+    }
   }
 )

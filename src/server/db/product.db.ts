@@ -1,4 +1,8 @@
-import { Product, SelectProductsOptions } from '@/shared/types'
+import {
+  Product,
+  SelectProductsOptions,
+  SubmittedProduct
+} from '@/shared/types'
 import pool from './pool.db'
 
 /**
@@ -31,7 +35,7 @@ export async function selectProducts(
     }
   }
 
-  const { rows }: { rows: Product[] } = await pool.query(sqlQuery)
+  const { rows } = await pool.query<Product>(sqlQuery)
 
   return rows
 }
@@ -47,7 +51,7 @@ export async function selectProducts(
 export async function selectProductById(
   id: number
 ): Promise<Product | undefined> {
-  const { rows }: { rows: Product[] } = await pool.query(
+  const { rows } = await pool.query<Product>(
     `SELECT product.*, category.name AS category_name
     FROM product
     JOIN category ON product.category_id = category.id
@@ -64,7 +68,7 @@ export async function selectProductById(
  * @export
  * @async
  * @param {number} limit
- * @returns {Promise<unknown>}
+ * @returns {Promise<number>}
  */
 export async function selectPagesCount(limit: number): Promise<number> {
   const { rows } = await pool.query(
@@ -75,4 +79,41 @@ export async function selectPagesCount(limit: number): Promise<number> {
   return rows[0].pages_count
 }
 
-selectProducts()
+/**
+ * Calculate the maximum page can be paginated
+ *
+ * @export
+ * @async
+ * @param {number} limit
+ * @returns {Promise<Product | unknown>}
+ */
+export async function insertNewProduct(
+  product: SubmittedProduct
+): Promise<Product | unknown> {
+  try {
+    const sqlQuery = `
+  INSERT INTO
+  product (name, description, price, stock, brand, sku, weight, category_id, image_url)
+VALUES
+  ($1::text, $2::text, $3::float, $4::int, $5::text, $6::text, $7::float, $8::int, $9::text)
+RETURNING *;`
+
+    const { rows } = await pool.query<Product>(sqlQuery, [
+      product.name,
+      product.description,
+      product.price,
+      product.stock,
+      product.brand,
+      product.sku,
+      product.weight,
+      product.category_id,
+      product.image_url
+    ])
+
+    return rows[0]
+  } catch (error) {
+    console.error(error)
+
+    return error
+  }
+}
