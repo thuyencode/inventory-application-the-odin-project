@@ -1,7 +1,8 @@
 import { productQuery } from '@/client/queries/products.queries'
-import { SelectProductSchema } from '@/shared/schemas/select-product.schema'
 import { createFileRoute } from '@tanstack/react-router'
 import * as v from 'valibot'
+
+const SelectProductSchema = v.pipe(v.number(), v.integer(), v.minValue(1))
 
 export const Route = createFileRoute('/products/$productId')({
   loader: ({ params, context }) => {
