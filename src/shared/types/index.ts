@@ -11,7 +11,7 @@ export type SelectProductsDefaultLimitOptions = v.InferInput<
   typeof SelectProductsDefaultLimitSchema
 >
 
-export type SubmittedProductSchema = v.InferInput<typeof SubmittedProductSchema>
+export type SubmittedProduct = v.InferInput<typeof SubmittedProductSchema>
 
 export interface Category {
   id: number
