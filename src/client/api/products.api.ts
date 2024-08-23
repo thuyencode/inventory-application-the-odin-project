@@ -1,4 +1,8 @@
-import { Product, SelectProductsDefaultLimitOptions } from '@/shared/types'
+import {
+  Product,
+  SelectProductsDefaultLimitOptions,
+  SubmittedProduct
+} from '@/shared/types'
 import { ProductsResponse } from '../types'
 import baseApi from './baseApi'
 
@@ -54,7 +58,7 @@ export async function getProducts(
 }
 
 /**
- * Get response from `/api/products/:id`
+ * Get response from `/api/products/:id`.
  *
  * @export
  * @async
@@ -64,4 +68,16 @@ export async function getProducts(
  */
 export async function getProductById(productId: number, signal?: AbortSignal) {
   return await productsApi.get(String(productId), { signal }).json<Product>()
+}
+
+/**
+ * Post data to `/api/products`.
+ *
+ * @export
+ * @async
+ * @param {SubmittedProduct} product
+ * @returns {unknown}
+ */
+export async function postProduct(product: SubmittedProduct) {
+  return await productsApi.post('', { json: product }).json<Product>()
 }
