@@ -10,17 +10,25 @@ import {
   StockSchema,
   WeightSchema
 } from '@/shared/schemas/submit-product.schema'
-import { SubmittedProduct } from '@/shared/types'
+import { ErrorResponse, SubmittedProduct } from '@/shared/types'
+import { Icon } from '@iconify/react/dist/iconify.js'
 import { FieldApi, useForm } from '@tanstack/react-form'
 import { useMutation } from '@tanstack/react-query'
 import { useLoaderData, useRouter } from '@tanstack/react-router'
 import { valibotValidator } from '@tanstack/valibot-form-adapter'
+import { HTTPError } from 'ky'
+import { useEffect, useRef, useState } from 'react'
 
 function AddNewProductPage() {
   const router = useRouter()
   const { categories } = useLoaderData({ from: '/products/new' })
 
-  const mutation = useMutation({
+  const {
+    mutateAsync: submitProduct,
+    isPending: isSubmitting,
+    isError,
+    error
+  } = useMutation({
     mutationFn: async (product: SubmittedProduct) => await postProduct(product),
     onSuccess: (data) => {
       router.invalidate()
@@ -45,13 +53,16 @@ function AddNewProductPage() {
       image_url: undefined
     },
     onSubmit: async ({ value }) => {
-      mutation.mutateAsync(value)
+      submitProduct(value)
     }
   })
 
   return (
     <>
+      <ErrorDialog isError={isError} error={error} />
+
       <h3 className='text-center'>Add a new product</h3>
+
       <form
         className='grid w-full max-w-lg grid-cols-1 gap-5 md:max-w-3xl md:grid-cols-2'
         onSubmit={(e) => {
@@ -343,11 +354,20 @@ function AddNewProductPage() {
           )}
         />
 
-        <button className='btn btn-primary' type='submit'>
-          Submit
+        <button
+          className={`btn btn-primary ${isSubmitting ? 'btn-disabled' : ''}`}
+          type='submit'
+          disabled={isSubmitting}
+        >
+          Submit{isSubmitting ? 'ting...' : ''}
         </button>
 
-        <button className='btn btn-outline btn-error'>Cancel</button>
+        <button
+          className={`btn btn-outline btn-error ${isSubmitting ? 'btn-disabled' : ''}`}
+          disabled={isSubmitting}
+        >
+          Cancel
+        </button>
       </form>
     </>
   )
@@ -367,6 +387,72 @@ function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
 
       {field.state.meta.isValidating ? 'Validating...' : null}
     </>
+  )
+}
+
+interface ErrorDialogProps {
+  isError: boolean
+  error: Error | null
+}
+
+function ErrorDialog({ isError, error }: ErrorDialogProps) {
+  const ref = useRef<HTMLDialogElement | null>(null)
+  const [err, setErr] = useState<Error | null>(error)
+
+  useEffect(() => {
+    if (ref.current === null) {
+      return
+    }
+
+    if (isError) {
+      ref.current.showModal()
+    } else {
+      ref.current.close()
+    }
+  }, [isError])
+
+  useEffect(() => {
+    const handleKyHTTPError = async () => {
+      if (error instanceof HTTPError) {
+        const { response } = error
+
+        const data = await response.json<ErrorResponse>()
+
+        setErr({
+          name: `Http Status ${data.error.statusCode} - ${data.error.message}`,
+          message: data.error.cause.detail
+        })
+      }
+    }
+
+    handleKyHTTPError()
+  }, [error])
+
+  function closeModal() {
+    if (ref.current === null) {
+      return
+    }
+
+    ref.current.close()
+  }
+
+  return (
+    <dialog className='modal' ref={ref}>
+      <div className='modal-box p-4 text-center'>
+        <h3 className='text-lg'>{err?.name}</h3>
+        <p className='pt-4 text-error'>{err?.message}</p>
+
+        <button
+          className='btn btn-circle btn-ghost btn-sm absolute right-3.5 top-3.5'
+          onClick={closeModal}
+        >
+          <Icon icon={'mdi:close'} />
+        </button>
+      </div>
+      <form method='dialog' className='modal-backdrop'>
+        <button>close</button>
+      </form>
+    </dialog>
   )
 }
 

@@ -20,3 +20,12 @@ export interface Category {
 }
 
 export type Product = { category_name: string } & SubmittedProduct & Category
+
+export interface ErrorResponse {
+  error: {
+    statusCode: number
+    message: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    cause: any
+  }
+}
