@@ -14,11 +14,14 @@ function ProductPage() {
         Previous
       </Link>
 
-      <div className='card rounded-none md:card-side max-md:gap-10'>
+      <div className='card w-full rounded-none md:card-side max-md:gap-10'>
         <figure>
           <img
             className='w-full !max-w-96 self-start rounded'
-            src={product.image_url}
+            src={
+              product.image_url ??
+              'https://dummyjson.com/image/400?text=No+Image&fontFamily=quicksand'
+            }
             loading='lazy'
             decoding='async'
           />

@@ -4,7 +4,7 @@ function ProductsTable({
   products
 }: Omit<ProductsPageComponentProps, 'display'>) {
   return (
-    <div className='w-full overflow-x-auto'>
+    <div className='w-full flex-1 overflow-x-auto'>
       <table className='products-table table table-zebra max-md:table-md'>
         <caption className='caption-top sm:hidden'>
           <small>
