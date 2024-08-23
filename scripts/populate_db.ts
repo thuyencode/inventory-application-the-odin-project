@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS
         stock INT NOT NULL,
         brand VARCHAR(255),
         sku VARCHAR(255) NOT NULL,
-        weight INT NOT NULL,
+        weight FLOAT NOT NULL,
         image_url VARCHAR(255) DEFAULT 'https://dummyjson.com/image/400?text=No+Image&fontFamily=quicksand',
         category_id INT NOT NULL,
         CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category (id)
