@@ -1,5 +1,5 @@
 import { ProductsSearchSchema } from '@/client/modules/products/schemas/products-search.schema'
-import { productsQueryFilters } from '@/client/queries/products.queries'
+import { getProductsQueryFilters } from '@/client/queries/products.queries'
 import { ProductsSearch } from '@/client/types'
 import { createFileRoute } from '@tanstack/react-router'
 import { valibotSearchValidator } from '@tanstack/router-valibot-adapter'
@@ -13,7 +13,7 @@ export const Route = createFileRoute('/products')({
     const { queryClient } = context
 
     return queryClient.ensureQueryData(
-      productsQueryFilters({ ...filters, page })
+      getProductsQueryFilters({ ...filters, page })
     )
   }
 })

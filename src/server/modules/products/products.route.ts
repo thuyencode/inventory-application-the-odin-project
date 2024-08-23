@@ -13,7 +13,7 @@ products_routes.get('/', handleProductsApi)
 // GET /api/products/:id
 products_routes.get('/:id', handleProductByIdApi)
 
-// POST /api/products/new
-products_routes.post('/new', handleSubmittedProduct)
+// POST /api/products/
+products_routes.post('/', handleSubmittedProduct)
 
 export default products_routes
