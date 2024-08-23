@@ -1,4 +1,6 @@
+import { postProduct } from '@/client/api/products.api'
 import {
+  BrandSchema,
   CategoryIdSchema,
   DescriptionSchema,
   ImageUrlSchema,
@@ -10,12 +12,25 @@ import {
 } from '@/shared/schemas/submit-product.schema'
 import { SubmittedProduct } from '@/shared/types'
 import { FieldApi, useForm } from '@tanstack/react-form'
+import { useMutation } from '@tanstack/react-query'
 import { useLoaderData, useRouter } from '@tanstack/react-router'
 import { valibotValidator } from '@tanstack/valibot-form-adapter'
 
 function AddNewProductPage() {
   const router = useRouter()
   const { categories } = useLoaderData({ from: '/products/new' })
+
+  const mutation = useMutation({
+    mutationFn: async (product: SubmittedProduct) => await postProduct(product),
+    onSuccess: (data) => {
+      router.invalidate()
+
+      router.navigate({
+        to: '/products/$productId',
+        params: { productId: String(data.id) }
+      })
+    }
+  })
 
   const form = useForm<SubmittedProduct>({
     defaultValues: {
@@ -30,15 +45,13 @@ function AddNewProductPage() {
       image_url: undefined
     },
     onSubmit: async ({ value }) => {
-      console.log(value)
-
-      router.invalidate()
+      mutation.mutateAsync(value)
     }
   })
 
   return (
     <>
-      <h3 className='text-center'>Add new product</h3>
+      <h3 className='text-center'>Add a new product</h3>
       <form
         className='grid w-full max-w-lg grid-cols-1 gap-5 md:max-w-3xl md:grid-cols-2'
         onSubmit={(e) => {
@@ -64,9 +77,44 @@ function AddNewProductPage() {
                 name={field.name}
                 type='text'
                 placeholder='Example: StarBook 7'
+                minLength={2}
+                maxLength={255}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
+                required
+              />
+              <FieldInfo field={field} />
+            </label>
+          )}
+        />
+
+        <form.Field
+          name='brand'
+          validatorAdapter={valibotValidator()}
+          validators={{
+            onSubmit: BrandSchema
+          }}
+          children={(field) => (
+            <label className='form-control w-full'>
+              <div className='label'>
+                <span className='label-text capitalize'>{field.name}</span>
+              </div>
+
+              <input
+                className={`input input-bordered ${field.state.meta.errors.length ? 'input-error' : ''}`}
+                name={field.name}
+                type='text'
+                placeholder='Example: Minimalist design. Powerful performance.'
+                minLength={2}
+                maxLength={255}
+                value={field.state.value ?? ''}
+                onBlur={field.handleBlur}
+                onChange={(e) =>
+                  field.handleChange(
+                    e.target.value === '' ? undefined : e.target.value
+                  )
+                }
               />
               <FieldInfo field={field} />
             </label>
@@ -80,7 +128,7 @@ function AddNewProductPage() {
             onSubmit: DescriptionSchema
           }}
           children={(field) => (
-            <label className='form-control w-full'>
+            <label className='form-control w-full md:col-span-2'>
               <div className='label'>
                 <span className='label-text capitalize'>{field.name}</span>
               </div>
@@ -90,6 +138,8 @@ function AddNewProductPage() {
                 name={field.name}
                 type='text'
                 placeholder='Example: Minimalist design. Powerful performance.'
+                minLength={10}
+                maxLength={500}
                 value={field.state.value ?? ''}
                 onBlur={field.handleBlur}
                 onChange={(e) =>
@@ -121,10 +171,12 @@ function AddNewProductPage() {
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(Number(e.target.value))}
+                required
               >
                 <option className='normal-case' value={0} disabled>
                   -- Choose a category --
                 </option>
+
                 {categories.map((category) => (
                   <option
                     className='capitalize'
@@ -158,9 +210,11 @@ function AddNewProductPage() {
                 name={field.name}
                 type='number'
                 step={0.1}
+                min={0.1}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(Number(e.target.value))}
+                required
               />
 
               <FieldInfo field={field} />
@@ -185,9 +239,11 @@ function AddNewProductPage() {
                 name={field.name}
                 type='number'
                 step={0.1}
+                min={0.1}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(Number(e.target.value))}
+                required
               />
 
               <FieldInfo field={field} />
@@ -211,9 +267,11 @@ function AddNewProductPage() {
                 className={'${ input input-bordered'}
                 name={field.name}
                 type='number'
+                min={1}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(Number(e.target.value))}
+                required
               />
 
               <FieldInfo field={field} />
@@ -243,6 +301,7 @@ function AddNewProductPage() {
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(e.target.value)}
+                required
               />
 
               <FieldInfo field={field} />
@@ -268,6 +327,7 @@ function AddNewProductPage() {
                 className={`input input-bordered ${field.state.meta.errors.length ? 'input-error' : ''}`}
                 name={field.name}
                 type='url'
+                maxLength={255}
                 placeholder='Example: https://placehold.co/400'
                 value={field.state.value ?? ''}
                 onBlur={field.handleBlur}
