@@ -10,14 +10,13 @@ import {
   StockSchema,
   WeightSchema
 } from '@/shared/schemas/submit-product.schema'
-import { ErrorResponse, SubmittedProduct } from '@/shared/types'
-import { Icon } from '@iconify/react/dist/iconify.js'
-import { FieldApi, useForm } from '@tanstack/react-form'
+import { SubmittedProduct } from '@/shared/types'
+import { useForm } from '@tanstack/react-form'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useLoaderData, useRouter } from '@tanstack/react-router'
+import { Link, useLoaderData, useRouter } from '@tanstack/react-router'
 import { valibotValidator } from '@tanstack/valibot-form-adapter'
-import { HTTPError } from 'ky'
-import { useEffect, useRef, useState } from 'react'
+import ErrorDialog from './components/error-dialog'
+import FieldInfo from './components/field-info'
 
 function NewProductPage() {
   const router = useRouter()
@@ -120,7 +119,7 @@ function NewProductPage() {
                 className={`input input-bordered ${field.state.meta.errors.length ? 'input-error' : ''}`}
                 name={field.name}
                 type='text'
-                placeholder='Example: Minimalist design. Powerful performance.'
+                placeholder='Example: Star Labs'
                 minLength={2}
                 maxLength={255}
                 value={field.state.value ?? ''}
@@ -366,97 +365,15 @@ function NewProductPage() {
           Submit{isSubmitting ? 'ting...' : ''}
         </button>
 
-        <button
+        <Link
           className={`btn btn-outline btn-error ${isSubmitting ? 'btn-disabled' : ''}`}
+          to='/products'
           disabled={isSubmitting}
         >
           Cancel
-        </button>
+        </Link>
       </form>
     </>
-  )
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function FieldInfo({ field }: { field: FieldApi<any, any, any, any> }) {
-  return (
-    <>
-      {field.state.meta.isTouched && field.state.meta.errors.length ? (
-        <div className='label'>
-          <span className='label-text-alt text-error'>
-            {field.state.meta.errors.join(',')}
-          </span>
-        </div>
-      ) : null}
-
-      {field.state.meta.isValidating ? 'Validating...' : null}
-    </>
-  )
-}
-
-interface ErrorDialogProps {
-  isError: boolean
-  error: Error | null
-}
-
-function ErrorDialog({ isError, error }: ErrorDialogProps) {
-  const ref = useRef<HTMLDialogElement | null>(null)
-  const [err, setErr] = useState<Error | null>(error)
-
-  useEffect(() => {
-    if (ref.current === null) {
-      return
-    }
-
-    if (isError) {
-      ref.current.showModal()
-    } else {
-      ref.current.close()
-    }
-  }, [isError])
-
-  useEffect(() => {
-    const handleKyHTTPError = async () => {
-      if (error instanceof HTTPError) {
-        const { response } = error
-
-        const data = await response.json<ErrorResponse>()
-
-        setErr({
-          name: `Http Status ${data.error.statusCode} - ${data.error.message}`,
-          message: data.error.cause.detail
-        })
-      }
-    }
-
-    handleKyHTTPError()
-  }, [error])
-
-  function closeModal() {
-    if (ref.current === null) {
-      return
-    }
-
-    ref.current.close()
-  }
-
-  return (
-    <dialog className='modal' ref={ref}>
-      <div className='modal-box p-4 text-center'>
-        <h3 className='text-lg'>{err?.name}</h3>
-        <p className='pt-4 text-error'>{err?.message}</p>
-
-        <button
-          className='btn btn-circle btn-ghost btn-sm absolute right-3.5 top-3.5'
-          onClick={closeModal}
-        >
-          <Icon icon={'mdi:close'} />
-        </button>
-      </div>
-      <form method='dialog' className='modal-backdrop'>
-        <button>close</button>
-      </form>
-    </dialog>
   )
 }
 
