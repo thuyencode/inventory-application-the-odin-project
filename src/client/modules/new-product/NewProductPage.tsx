@@ -13,14 +13,15 @@ import {
 import { ErrorResponse, SubmittedProduct } from '@/shared/types'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { FieldApi, useForm } from '@tanstack/react-form'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useLoaderData, useRouter } from '@tanstack/react-router'
 import { valibotValidator } from '@tanstack/valibot-form-adapter'
 import { HTTPError } from 'ky'
 import { useEffect, useRef, useState } from 'react'
 
-function AddNewProductPage() {
+function NewProductPage() {
   const router = useRouter()
+  const queryClient = useQueryClient()
   const { categories } = useLoaderData({ from: '/products/new' })
 
   const {
@@ -30,10 +31,13 @@ function AddNewProductPage() {
     error
   } = useMutation({
     mutationFn: async (product: SubmittedProduct) => await postProduct(product),
-    onSuccess: (data) => {
-      router.invalidate()
+    onSuccess: async (data) => {
+      await queryClient.invalidateQueries({ queryKey: ['products'] })
+      await queryClient.invalidateQueries({ queryKey: ['categories'] })
 
-      router.navigate({
+      await router.invalidate()
+
+      await router.navigate({
         to: '/products/$productId',
         params: { productId: String(data.id) }
       })
@@ -456,4 +460,4 @@ function ErrorDialog({ isError, error }: ErrorDialogProps) {
   )
 }
 
-export default AddNewProductPage
+export default NewProductPage

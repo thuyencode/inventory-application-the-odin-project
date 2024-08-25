@@ -1,6 +1,6 @@
-import AddNewProductPage from '@/client/modules/new-product/AddNewProductPage'
+import NewProductPage from '@/client/modules/new-product/NewProductPage'
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/products/new')({
-  component: AddNewProductPage
+  component: NewProductPage
 })

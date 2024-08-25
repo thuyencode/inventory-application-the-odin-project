@@ -17,7 +17,12 @@ export const StockSchema = v.pipe(v.number(), v.integer(), v.minValue(1))
 
 export const BrandSchema = v.nullish(NameSchema)
 
-export const SkuSchema = v.pipe(v.string(), v.trim(), v.length(8))
+export const SkuSchema = v.pipe(
+  v.string(),
+  v.trim(),
+  v.toUpperCase(),
+  v.length(8)
+)
 
 export const WeightSchema = PriceSchema
 
