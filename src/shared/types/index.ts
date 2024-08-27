@@ -17,9 +17,11 @@ export interface Category {
   id: number
   created_time: Date
   name: string
+  products_count: number
 }
 
-export type Product = { category_name: string } & SubmittedProduct & Category
+export type Product = { category_name: string } & SubmittedProduct &
+  Omit<Category, 'products_count'>
 
 export interface ErrorResponse {
   error: {

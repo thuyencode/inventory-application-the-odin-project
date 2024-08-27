@@ -9,9 +9,19 @@ import pool from './pool.db'
  * @returns {Promise<Category[]>}
  */
 export async function selectCategories(): Promise<Category[]> {
-  const { rows }: { rows: Category[] } = await pool.query(
-    'SELECT * FROM category'
-  )
+  const sqlQuery = `
+SELECT
+  category.*,
+  COUNT(product.id) AS products_count
+FROM
+  product
+  RIGHT JOIN category ON product.category_id = category.id
+GROUP BY
+  category.id
+ORDER BY
+  category.id`
+
+  const { rows }: { rows: Category[] } = await pool.query(sqlQuery)
 
   return rows
 }

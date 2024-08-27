@@ -14,27 +14,29 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ProductsRouteImport } from './routes/products/route'
+import { Route as CategoriesRouteImport } from './routes/categories/route'
 import { Route as ProductsNewRouteImport } from './routes/products/new/route'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId/route'
 
 // Create Virtual Routes
 
-const CategoriesLazyImport = createFileRoute('/categories')()
 const IndexLazyImport = createFileRoute('/')()
 const ProductsIndexLazyImport = createFileRoute('/products/')()
 
 // Create/Update Routes
-
-const CategoriesLazyRoute = CategoriesLazyImport.update({
-  path: '/categories',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/categories.lazy').then((d) => d.Route))
 
 const ProductsRouteRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/products/route.lazy').then((d) => d.Route),
+)
+
+const CategoriesRouteRoute = CategoriesRouteImport.update({
+  path: '/categories',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/categories/route.lazy').then((d) => d.Route),
 )
 
 const IndexLazyRoute = IndexLazyImport.update({
@@ -74,18 +76,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRoute
+    }
     '/products': {
       id: '/products'
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesLazyImport
       parentRoute: typeof rootRoute
     }
     '/products/$productId': {
@@ -116,12 +118,12 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  CategoriesRouteRoute,
   ProductsRouteRoute: ProductsRouteRoute.addChildren({
     ProductsProductIdRouteRoute,
     ProductsNewRouteRoute,
     ProductsIndexLazyRoute,
   }),
-  CategoriesLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -133,12 +135,15 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/products",
-        "/categories"
+        "/categories",
+        "/products"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/categories": {
+      "filePath": "categories/route.tsx"
     },
     "/products": {
       "filePath": "products/route.tsx",
@@ -147,9 +152,6 @@ export const routeTree = rootRoute.addChildren({
         "/products/new",
         "/products/"
       ]
-    },
-    "/categories": {
-      "filePath": "categories.lazy.tsx"
     },
     "/products/$productId": {
       "filePath": "products/$productId/route.tsx",
