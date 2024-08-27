@@ -102,4 +102,3 @@ async function main() {
 }
 
 main()
-// console.log(getProductsToBeInserted())

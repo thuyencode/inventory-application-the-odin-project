@@ -3,7 +3,7 @@ import {
   SelectProductsOptions,
   SubmittedProduct
 } from '@/shared/types'
-import pool from './pool.db'
+import pool from './pool'
 
 /**
  * Select all rows from the `product` table.

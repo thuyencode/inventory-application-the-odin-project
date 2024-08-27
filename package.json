@@ -8,7 +8,8 @@
     "start": "dotenvx run -f .env.production.local -- tsx src/server/main.ts",
     "build": "tsc & vite build",
     "populate-db:dev": "dotenvx run -f .env.development.local -- tsx scripts/populate_db.ts",
-    "populate-db:prod": "dotenvx run -f .env.production.local -- tsx scripts/populate_db.ts"
+    "populate-db:prod": "dotenvx run -f .env.production.local -- tsx scripts/populate_db.ts",
+    "lint": "tsc ; eslint ."
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.10.3",

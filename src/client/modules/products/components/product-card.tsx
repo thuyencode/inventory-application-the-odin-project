@@ -26,6 +26,7 @@ function ProductCard({ product }: ProductCardProps) {
           loading='lazy'
           decoding='async'
         />
+
         <figcaption className='flex flex-col items-end'>
           <span className='text-wrap text-end'>{product.name}</span>
           <span className='font-light'>${product.price}</span>

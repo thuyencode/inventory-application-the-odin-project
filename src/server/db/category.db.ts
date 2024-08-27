@@ -1,5 +1,5 @@
 import { Category } from '@/shared/types'
-import pool from './pool.db'
+import pool from './pool'
 
 /**
  * Select all rows in the `category` table

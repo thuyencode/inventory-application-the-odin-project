@@ -4,7 +4,7 @@ import CategoriesList from './components/categories-list'
 function CategoriesPage() {
   const { categories } = useLoaderData({ from: '/categories' })
 
-  return <CategoriesList categories={categories}></CategoriesList>
+  return <CategoriesList categories={categories} />
 }
 
 export default CategoriesPage

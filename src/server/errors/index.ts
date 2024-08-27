@@ -1,6 +1,6 @@
-import HttpError from './HttpError.js'
-import InternalServerError from './InternalServerError.js'
-import MethodNotAllowed from './MethodNotAllowed.js'
-import NotFound from './NotFound.js'
+import HttpError from './HttpError'
+import InternalServerError from './InternalServerError'
+import MethodNotAllowed from './MethodNotAllowed'
+import NotFound from './NotFound'
 
 export { HttpError, InternalServerError, MethodNotAllowed, NotFound }

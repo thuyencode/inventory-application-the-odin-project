@@ -7,25 +7,11 @@ export const getProductsQueryFilters = (
 ) =>
   queryOptions({
     queryKey: ['products', filters],
-    queryFn: async ({ signal }) => {
-      const data = await getProducts(signal, filters)
-
-      return {
-        ...data,
-        products: data.products.map((product) => ({
-          ...product,
-          created_time: new Date(product.created_time)
-        }))
-      }
-    }
+    queryFn: async ({ signal }) => await getProducts(signal, filters)
   })
 
 export const getProductQuery = (productId: number) =>
   queryOptions({
     queryKey: ['products', productId],
-    queryFn: async ({ signal }) => {
-      const data = await getProductById(productId, signal)
-
-      return { ...data, created_time: new Date(data.created_time) }
-    }
+    queryFn: async ({ signal }) => await getProductById(productId, signal)
   })

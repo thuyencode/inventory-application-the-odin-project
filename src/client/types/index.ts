@@ -1,4 +1,4 @@
-import { ProductsSearchSchema } from '@/client/modules/products/schemas/products-search.schema'
+import { ProductsSearchSchema } from '@/client/schemas/products-search.schema'
 import { Category, Product } from '@/shared/types'
 import * as v from 'valibot'
 

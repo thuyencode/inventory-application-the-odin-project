@@ -12,6 +12,7 @@ function ProductsTable({
             recommended
           </small>
         </caption>
+
         <thead>
           <tr>
             <th>ID</th>
@@ -25,6 +26,7 @@ function ProductsTable({
             <th>Added</th>
           </tr>
         </thead>
+
         <tbody className='capitalize'>
           {products.map((product) => (
             <tr key={`${product.name}-${product.id}`} tabIndex={0}>

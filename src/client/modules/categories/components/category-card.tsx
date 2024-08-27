@@ -10,7 +10,7 @@ function CategoryCard({ category }: CategoryCardProps) {
       <figure>
         <img
           className='size-full max-h-20 max-w-20'
-          src={`https://ui-avatars.com/api/?name=${category.name}`}
+          src={`https://ui-avatars.com/api/?name=${category.name}&background=random`}
           alt={category.name}
         />
       </figure>

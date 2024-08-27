@@ -1,5 +1,5 @@
 import { HttpStatus, httpStatusTextByCode } from 'http-status-ts'
-import HttpError from './HttpError.js'
+import HttpError from './HttpError'
 
 /**
  * Internal Server Error

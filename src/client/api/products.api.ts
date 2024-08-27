@@ -52,9 +52,17 @@ export async function getProducts(
     searchParams.set(key, String(value))
   }
 
-  return await productsApi
+  const data = await productsApi
     .get('', { signal, searchParams })
     .json<ProductsResponse>()
+
+  return {
+    ...data,
+    products: data.products.map((product) => ({
+      ...product,
+      created_time: new Date(product.created_time)
+    }))
+  }
 }
 
 /**
@@ -66,8 +74,15 @@ export async function getProducts(
  * @param {?AbortSignal} signal
  * @returns {Promise<Product>}
  */
-export async function getProductById(productId: number, signal?: AbortSignal) {
-  return await productsApi.get(String(productId), { signal }).json<Product>()
+export async function getProductById(
+  productId: number,
+  signal?: AbortSignal
+): Promise<Product> {
+  const data = await productsApi
+    .get(String(productId), { signal })
+    .json<Product>()
+
+  return { ...data, created_time: new Date(data.created_time) }
 }
 
 /**

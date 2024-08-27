@@ -11,13 +11,6 @@ class HttpError extends Error {
   statusCode: HttpStatus
   cause: Error | string | unknown
 
-  /**
-   * Creates an instance of HttpError.
-   *
-   * @constructor
-   * @param {string} message
-   * @param {number} statusCode
-   */
   constructor(
     message: string,
     statusCode: HttpStatus,
