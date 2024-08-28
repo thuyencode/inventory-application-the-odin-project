@@ -2,7 +2,7 @@ import { getProductById, getProducts } from '@/client/api/products.api'
 import { SelectProductsDefaultLimitOptions } from '@/shared/types'
 import { queryOptions } from '@tanstack/react-query'
 
-export const getProductsQueryFilters = (
+export const queryGetProductsWithFilters = (
   filters: SelectProductsDefaultLimitOptions
 ) =>
   queryOptions({
@@ -10,7 +10,7 @@ export const getProductsQueryFilters = (
     queryFn: async ({ signal }) => await getProducts(signal, filters)
   })
 
-export const getProductQuery = (productId: number) =>
+export const queryGetProduct = (productId: number) =>
   queryOptions({
     queryKey: ['products', productId],
     queryFn: async ({ signal }) => await getProductById(productId, signal)

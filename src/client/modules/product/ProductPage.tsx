@@ -1,8 +1,11 @@
+import { queryGetProduct } from '@/client/queries/products.queries'
 import { Icon } from '@iconify/react'
-import { Link, useLoaderData } from '@tanstack/react-router'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { Link, useParams } from '@tanstack/react-router'
 
 function ProductPage() {
-  const product = useLoaderData({ from: '/products/$productId' })
+  const { productId } = useParams({ from: '/products/$productId' })
+  const { data: product } = useSuspenseQuery(queryGetProduct(Number(productId)))
 
   return (
     <>

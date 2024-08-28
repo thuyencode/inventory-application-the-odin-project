@@ -1,8 +1,11 @@
-import { useLoaderData } from '@tanstack/react-router'
+import { queryGetCategories } from '@/client/queries/categories.queries'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import CategoriesList from './components/categories-list'
 
 function CategoriesPage() {
-  const { categories } = useLoaderData({ from: '/categories' })
+  const {
+    data: { categories }
+  } = useSuspenseQuery(queryGetCategories)
 
   return <CategoriesList categories={categories} />
 }

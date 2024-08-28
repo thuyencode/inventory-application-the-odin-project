@@ -1,4 +1,4 @@
-import { getProductQuery } from '@/client/queries/products.queries'
+import { queryGetProduct } from '@/client/queries/products.queries'
 import { createFileRoute } from '@tanstack/react-router'
 import * as v from 'valibot'
 
@@ -9,6 +9,6 @@ export const Route = createFileRoute('/products/$productId')({
     const productId = v.parse(SelectProductSchema, Number(params.productId))
     const { queryClient } = context
 
-    return queryClient.ensureQueryData(getProductQuery(productId))
+    queryClient.ensureQueryData(queryGetProduct(productId))
   }
 })

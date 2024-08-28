@@ -1,9 +1,12 @@
-import { useLoaderData } from '@tanstack/react-router'
+import { queryGetCategories } from '@/client/queries/categories.queries'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { Pie, PieChart } from 'recharts'
 
 function HomePage() {
-  const { categories } = useLoaderData({ from: '/' })
+  const {
+    data: { categories }
+  } = useSuspenseQuery(queryGetCategories)
 
   const filteredCategories = useMemo(
     () => categories.filter((category) => category.products_count > 0),

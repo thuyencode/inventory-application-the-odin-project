@@ -1,4 +1,5 @@
 import { postProduct } from '@/client/api/products.api'
+import { queryGetCategories } from '@/client/queries/categories.queries'
 import {
   BrandSchema,
   CategoryIdSchema,
@@ -12,8 +13,12 @@ import {
 } from '@/shared/schemas/submit-product.schema'
 import { SubmittedProduct } from '@/shared/types'
 import { useForm } from '@tanstack/react-form'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Link, useLoaderData, useRouter } from '@tanstack/react-router'
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery
+} from '@tanstack/react-query'
+import { Link, useRouter } from '@tanstack/react-router'
 import { valibotValidator } from '@tanstack/valibot-form-adapter'
 import ErrorDialog from './components/error-dialog'
 import FieldInfo from './components/field-info'
@@ -21,7 +26,9 @@ import FieldInfo from './components/field-info'
 function NewProductPage() {
   const router = useRouter()
   const queryClient = useQueryClient()
-  const { categories } = useLoaderData({ from: '/products/new' })
+  const {
+    data: { categories }
+  } = useSuspenseQuery(queryGetCategories)
 
   const {
     mutateAsync: submitProduct,
