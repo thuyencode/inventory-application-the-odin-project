@@ -1,8 +1,18 @@
 import { ProductsPageComponentProps } from '@/client/types'
+import { useNavigate } from '@tanstack/react-router'
 
 function ProductsTable({
   products
 }: Omit<ProductsPageComponentProps, 'display'>) {
+  const navigate = useNavigate()
+
+  function goToProductPage(productId: number) {
+    navigate({
+      to: '/products/$productId',
+      params: { productId: String(productId) }
+    })
+  }
+
   return (
     <div className='w-full flex-1 overflow-x-auto'>
       <table className='products-table table table-zebra max-md:table-md'>
@@ -29,7 +39,23 @@ function ProductsTable({
 
         <tbody className='capitalize'>
           {products.map((product) => (
-            <tr key={`${product.name}-${product.id}`} tabIndex={0}>
+            <tr
+              className='hover:!bg-base-content hover:!text-base-300'
+              onClick={() => goToProductPage(product.id)}
+              onKeyDown={(e) => {
+                switch (e.key) {
+                  case 'Enter':
+                  case ' ':
+                    goToProductPage(product.id)
+                    break
+
+                  default:
+                    break
+                }
+              }}
+              key={`${product.name}-${product.id}`}
+              tabIndex={0}
+            >
               <td>{product.id}</td>
               <td>{product.name}</td>
               <td>{product.category_name}</td>
