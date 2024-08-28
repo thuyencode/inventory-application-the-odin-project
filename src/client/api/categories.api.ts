@@ -15,7 +15,17 @@ const categoriesApi = baseApi.extend((options) => ({
  * @returns {Promise<CategoriesResponse>}
  */
 export async function getCategories(signal?: AbortSignal) {
-  return await categoriesApi.get('', { signal }).json<CategoriesResponse>()
+  const data = await categoriesApi
+    .get('', { signal })
+    .json<CategoriesResponse>()
+
+  return {
+    ...data,
+    categories: data.categories.map((category) => ({
+      ...category,
+      products_count: Number(category.products_count)
+    }))
+  }
 }
 
 /**
