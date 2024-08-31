@@ -1,5 +1,7 @@
 # Project: Inventory Application
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe id="js_video_iframe" src="  https://jumpshare.com/embed/Pvy3UfCFQTgKFzTDZ17G" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 **Tech stacks:**
 
 |                                                                                                                                                 Frontend                                                                                                                                                  |                                                                                                                Backend                                                                                                                 |
@@ -8,7 +10,7 @@
 
 ## Getting started
 
-### 1. Setup database
+### 1. Setting-up database
 
 Your need to install PostgreSQL first using your OS's package manager, an installer file or using Docker (recommended).
 
@@ -16,7 +18,7 @@ Configure the host address, port number, username, password, a database accordin
 
 Copy the file [`.env.example`](./.env.example) into `.env.production.local` and `.env.development.local` and edit the env variables' values.
 
-## 2. Run the project
+## 2. Running the project
 
 First, install all the dependencies:
 
@@ -30,9 +32,9 @@ To run the dev server:
 npm run dev
 ```
 
-To export and preview the production build:
+To export and run the production build:
 
 ```bash
 npm run build
-npm run preview
+npm run start
 ```
