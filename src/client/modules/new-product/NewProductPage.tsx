@@ -105,6 +105,7 @@ function NewProductPage() {
                 onChange={(e) => field.handleChange(e.target.value)}
                 required
               />
+
               <FieldInfo field={field} />
             </label>
           )}
@@ -137,6 +138,7 @@ function NewProductPage() {
                   )
                 }
               />
+
               <FieldInfo field={field} />
             </label>
           )}
@@ -169,6 +171,7 @@ function NewProductPage() {
                   )
                 }
               />
+
               <FieldInfo field={field} />
             </label>
           )}

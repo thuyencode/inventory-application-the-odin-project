@@ -10,12 +10,14 @@ function FieldInfo({ field }: FieldInfoProps) {
     <div className='label'>
       <span className='label-text-alt'>
         {field.state.meta.isTouched && field.state.meta.errors.length ? (
-          <span className='text-error'>
+          <span className='text-sm text-error'>
             {field.state.meta.errors.join(',')}
           </span>
         ) : null}
 
-        {field.state.meta.isValidating ? 'Validating...' : null}
+        {field.state.meta.isValidating ? (
+          <span className='text-sm'>'Validating...'</span>
+        ) : null}
       </span>
     </div>
   )
