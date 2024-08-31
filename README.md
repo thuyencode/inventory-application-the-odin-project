@@ -1,6 +1,6 @@
 # Project: Inventory Application
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe id="js_video_iframe" src="  https://jumpshare.com/embed/Pvy3UfCFQTgKFzTDZ17G" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+[![Demo: Inventory Applicaton - Watch Video](https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949386790303ab48246a41a3806c96bcba0a35391e41cf3c6db4319480ffa66dd95c231026f4a1067b6ff9ad9d68a1f93e64f47f107bb9467d6686354bd45f78f0b1e599480873f9ea0ad3770d0a29a0acc1)](https://jmp.sh/v/Pvy3UfCFQTgKFzTDZ17G)
 
 **Tech stacks:**
 
