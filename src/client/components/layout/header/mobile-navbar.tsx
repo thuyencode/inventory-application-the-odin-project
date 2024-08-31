@@ -21,7 +21,7 @@ function MobileNavbar() {
               htmlFor='mobile-nav'
               aria-label='close sidebar'
             >
-              <Icon className='text-xl' icon={'ri:sidebar-unfold-fill'} />
+              <Icon className='text-xl' icon={'ri:sidebar-fold-fill'} />
               Close
             </label>
           </li>
@@ -33,7 +33,7 @@ function MobileNavbar() {
           </li>
           <li>
             <Link tabIndex={0} to='/products/new'>
-              <Icon className='text-xl' icon={'mdi:box-variant'} />
+              <Icon className='text-xl' icon={'mdi:plus'} />
               Add New Product
             </Link>
           </li>

@@ -25,7 +25,7 @@ function Navbar() {
           </li>
           <li>
             <Link tabIndex={0} to='/products/new'>
-              <Icon className='text-2xl' icon={'mdi:box-variant'} />
+              <Icon className='text-2xl' icon={'mdi:plus'} />
               Add New Product
             </Link>
           </li>
@@ -50,7 +50,7 @@ function Navbar() {
               className='drawer-button'
               aria-description='Open the sidebar'
             >
-              <Icon className='text-2xl' icon={'ri:sidebar-fold-fill'} />
+              <Icon className='text-2xl' icon={'ri:sidebar-unfold-fill'} />
             </label>
           </li>
         </ul>
