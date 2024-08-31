@@ -1,15 +1,12 @@
-import { ProductsPageComponentProps } from '@/client/types'
 import { Icon } from '@iconify/react'
-import { Link } from '@tanstack/react-router'
+import { Link, useSearch } from '@tanstack/react-router'
 import { DISPLAY_TYPE, DISPLAY_TYPE_WITH_ICONS } from '../../constants'
 
-interface DisplayFormatToggleProps {
-  currentlyDisplayIn: ProductsPageComponentProps['display']
-}
+function DisplayFormatToggle() {
+  const { display: currentlyDisplayIn = 'card' } = useSearch({
+    from: '/products'
+  })
 
-function DisplayFormatToggle({
-  currentlyDisplayIn = 'card'
-}: DisplayFormatToggleProps) {
   return (
     <div className='join'>
       {DISPLAY_TYPE.map((type) => (

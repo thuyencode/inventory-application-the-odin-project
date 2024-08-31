@@ -1,13 +1,10 @@
-import { ProductsSearch } from '@/client/types'
 import { SORT_IN, SORT_IN_WITH_ICONS } from '@/shared/constants'
 import { Icon } from '@iconify/react'
-import { Link } from '@tanstack/react-router'
+import { Link, useSearch } from '@tanstack/react-router'
 
-interface SortInSelectorProps {
-  currentlySortIn: ProductsSearch['sortIn']
-}
+function SortInSelector() {
+  const { sortIn: currentlySortIn } = useSearch({ from: '/products' })
 
-function SortInSelector({ currentlySortIn }: SortInSelectorProps) {
   return (
     <details className='dropdown dropdown-end'>
       <summary className='btn btn-outline btn-sm m-0 gap-1 capitalize'>

@@ -1,13 +1,10 @@
-import { ProductsSearch } from '@/client/types'
 import { ORDER_BY, ORDER_BY_WITH_ICONS } from '@/shared/constants'
 import { Icon } from '@iconify/react'
-import { Link } from '@tanstack/react-router'
+import { Link, useSearch } from '@tanstack/react-router'
 
-interface OrderBySelectorProps {
-  currentlyOrderBy: ProductsSearch['orderBy']
-}
+function OrderBySelector() {
+  const { orderBy: currentlyOrderBy } = useSearch({ from: '/products' })
 
-function OrderBySelector({ currentlyOrderBy }: OrderBySelectorProps) {
   return (
     <details className='dropdown dropdown-end'>
       <summary className='btn btn-outline btn-sm m-0 gap-1 capitalize'>
