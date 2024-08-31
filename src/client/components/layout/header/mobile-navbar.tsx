@@ -26,15 +26,15 @@ function MobileNavbar() {
             </label>
           </li>
           <li>
-            <Link tabIndex={0} to='/'>
-              <Icon className='text-xl' icon={'mdi:home'} />
-              Home
-            </Link>
-          </li>
-          <li>
             <Link tabIndex={0} to='/products'>
               <Icon className='text-xl' icon={'mdi:box-variant'} />
               Products
+            </Link>
+          </li>
+          <li>
+            <Link tabIndex={0} to='/products/new'>
+              <Icon className='text-xl' icon={'mdi:box-variant'} />
+              Add New Product
             </Link>
           </li>
           <li>
