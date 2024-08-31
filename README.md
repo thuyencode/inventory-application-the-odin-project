@@ -2,7 +2,7 @@
 
 [More details information here.](https://www.theodinproject.com/lessons/node-path-nodejs-inventory-application)
 
-[![Demo: Inventory Applicaton - Watch Video](https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949386790303ab48246a41a3806c96bcba0a35391e41cf3c6db4319480ffa66dd95c231026f4a1067b6ff9ad9d68a1f93e64f47f107bb9467d6686354bd45f78f0b1e599480873f9ea0ad3770d0a29a0acc1)](https://jmp.sh/v/Pvy3UfCFQTgKFzTDZ17G)
+[![Demo: Inventory Application - Watch Video](https://previews.jumpshare.com/thumb/815bc01b796dd6f1733c957c5af1949386790303ab48246a41a3806c96bcba0a35391e41cf3c6db4319480ffa66dd95c231026f4a1067b6ff9ad9d68a1f93e64f47f107bb9467d6686354bd45f78f0b1e599480873f9ea0ad3770d0a29a0acc1)](https://jmp.sh/v/Pvy3UfCFQTgKFzTDZ17G)
 
 **Tech stacks:**
 
