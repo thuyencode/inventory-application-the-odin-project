@@ -1,18 +1,10 @@
 import { ProductsPageComponentProps } from '@/client/types'
-import { useNavigate } from '@tanstack/react-router'
+import { Icon } from '@iconify/react'
+import { Link } from '@tanstack/react-router'
 
 function ProductsTable({
   products
 }: Omit<ProductsPageComponentProps, 'display'>) {
-  const navigate = useNavigate()
-
-  function goToProductPage(productId: number) {
-    navigate({
-      to: '/products/$productId',
-      params: { productId: String(productId) }
-    })
-  }
-
   return (
     <div className='w-full flex-1 overflow-x-auto'>
       <table className='products-table table table-zebra max-md:table-md'>
@@ -34,37 +26,48 @@ function ProductsTable({
             <th>SKU</th>
             <th>Stock</th>
             <th>Added</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody className='capitalize'>
           {products.map((product) => (
-            <tr
-              className='hover:!bg-base-content hover:!text-base-300'
-              onClick={() => goToProductPage(product.id)}
-              onKeyDown={(e) => {
-                switch (e.key) {
-                  case 'Enter':
-                  case ' ':
-                    goToProductPage(product.id)
-                    break
-
-                  default:
-                    break
-                }
-              }}
-              key={`${product.name}-${product.id}`}
-              tabIndex={0}
-            >
+            <tr key={`${product.name}-${product.id}`} tabIndex={0}>
               <td>{product.id}</td>
-              <td>{product.name}</td>
+              <td>
+                <Link
+                  className='link-hover link'
+                  to='/products/$productId'
+                  params={{ productId: String(product.id) }}
+                >
+                  {product.name}
+                </Link>
+              </td>
               <td>{product.category_name}</td>
               <td>{product.brand}</td>
               <td>${product.price}</td>
               <td>{product.weight}</td>
               <td>{product.sku}</td>
               <td>{product.stock}</td>
-              <td>{product.created_time.toLocaleString()}</td>
+              <td>{product.created_time.toLocaleDateString()}</td>
+
+              <td className='z-50'>
+                <Link
+                  className='btn btn-outline btn-secondary btn-sm flex-nowrap gap-1'
+                  to='/products/$productId/edit'
+                  params={{ productId: String(product.id) }}
+                >
+                  Edit
+                  <Icon
+                    className='text-lg'
+                    icon={'mdi:text-box-edit-outline'}
+                  />
+                </Link>
+                <button className='btn btn-outline btn-error btn-sm flex-nowrap gap-1'>
+                  Delete
+                  <Icon className='text-lg' icon={'mdi:trash-can-outline'} />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -2,7 +2,8 @@ import {
   insertNewProduct,
   selectPagesCount,
   selectProductById,
-  selectProducts
+  selectProducts,
+  updateAlreadyExistedProduct
 } from '@/server/db/product.db'
 import type {
   Product,
@@ -32,4 +33,11 @@ export async function getPagesCount(): Promise<number> {
 
 export async function addNewProduct(product: SubmittedProduct) {
   return insertNewProduct(product)
+}
+
+export async function updateProduct(
+  product: SubmittedProduct,
+  productId: number
+) {
+  return updateAlreadyExistedProduct(product, productId)
 }

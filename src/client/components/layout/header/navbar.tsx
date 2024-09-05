@@ -26,7 +26,7 @@ function Navbar() {
           <li>
             <Link tabIndex={0} to='/products/new'>
               <Icon className='text-2xl' icon={'mdi:plus'} />
-              Add New Product
+              New
             </Link>
           </li>
           <li>

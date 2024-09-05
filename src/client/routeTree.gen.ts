@@ -17,11 +17,15 @@ import { Route as ProductsRouteImport } from './routes/products/route'
 import { Route as CategoriesRouteImport } from './routes/categories/route'
 import { Route as ProductsNewRouteImport } from './routes/products/new/route'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId/route'
+import { Route as ProductsProductIdEditImport } from './routes/products/$productId/edit'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
 const ProductsIndexLazyImport = createFileRoute('/products/')()
+const ProductsProductIdIndexLazyImport = createFileRoute(
+  '/products/$productId/',
+)()
 
 // Create/Update Routes
 
@@ -63,6 +67,22 @@ const ProductsProductIdRouteRoute = ProductsProductIdRouteImport.update({
   getParentRoute: () => ProductsRouteRoute,
 } as any).lazy(() =>
   import('./routes/products/$productId/route.lazy').then((d) => d.Route),
+)
+
+const ProductsProductIdIndexLazyRoute = ProductsProductIdIndexLazyImport.update(
+  {
+    path: '/',
+    getParentRoute: () => ProductsProductIdRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/products/$productId/index.lazy').then((d) => d.Route),
+)
+
+const ProductsProductIdEditRoute = ProductsProductIdEditImport.update({
+  path: '/edit',
+  getParentRoute: () => ProductsProductIdRouteRoute,
+} as any).lazy(() =>
+  import('./routes/products/$productId/edit.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -111,6 +131,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsIndexLazyImport
       parentRoute: typeof ProductsRouteImport
     }
+    '/products/$productId/edit': {
+      id: '/products/$productId/edit'
+      path: '/edit'
+      fullPath: '/products/$productId/edit'
+      preLoaderRoute: typeof ProductsProductIdEditImport
+      parentRoute: typeof ProductsProductIdRouteImport
+    }
+    '/products/$productId/': {
+      id: '/products/$productId/'
+      path: '/'
+      fullPath: '/products/$productId/'
+      preLoaderRoute: typeof ProductsProductIdIndexLazyImport
+      parentRoute: typeof ProductsProductIdRouteImport
+    }
   }
 }
 
@@ -120,7 +154,10 @@ export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   CategoriesRouteRoute,
   ProductsRouteRoute: ProductsRouteRoute.addChildren({
-    ProductsProductIdRouteRoute,
+    ProductsProductIdRouteRoute: ProductsProductIdRouteRoute.addChildren({
+      ProductsProductIdEditRoute,
+      ProductsProductIdIndexLazyRoute,
+    }),
     ProductsNewRouteRoute,
     ProductsIndexLazyRoute,
   }),
@@ -155,7 +192,11 @@ export const routeTree = rootRoute.addChildren({
     },
     "/products/$productId": {
       "filePath": "products/$productId/route.tsx",
-      "parent": "/products"
+      "parent": "/products",
+      "children": [
+        "/products/$productId/edit",
+        "/products/$productId/"
+      ]
     },
     "/products/new": {
       "filePath": "products/new/route.tsx",
@@ -164,6 +205,14 @@ export const routeTree = rootRoute.addChildren({
     "/products/": {
       "filePath": "products/index.lazy.tsx",
       "parent": "/products"
+    },
+    "/products/$productId/edit": {
+      "filePath": "products/$productId/edit.tsx",
+      "parent": "/products/$productId"
+    },
+    "/products/$productId/": {
+      "filePath": "products/$productId/index.lazy.tsx",
+      "parent": "/products/$productId"
     }
   }
 }

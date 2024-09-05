@@ -11,7 +11,8 @@ import {
   addNewProduct,
   getPagesCount,
   getProductById,
-  getProducts
+  getProducts,
+  updateProduct
 } from './products.service'
 
 export const handleProductsApi = expressAsyncHandler(
@@ -79,6 +80,42 @@ export const handleSubmittedProduct = expressAsyncHandler(
       }
 
       res.json(newProduct)
+    } catch (error) {
+      if (v.isValiError(error)) {
+        const issues = v.flatten(error.issues).nested
+
+        throw new BadRequest(issues)
+      } else {
+        throw error
+      }
+    }
+  }
+)
+
+export const handleUpdateProductByIdApi = expressAsyncHandler(
+  async (req: e.Request, res: e.Response) => {
+    try {
+      const id = Number(req.params.id)
+
+      if (!Number.isInteger(id)) {
+        throw new BadRequest('The given id must be an integer number')
+      }
+
+      const submittedForUpdatingProduct = v.parse(
+        SubmittedProductSchema,
+        req.body
+      )
+
+      const updatedProduct = await updateProduct(
+        submittedForUpdatingProduct,
+        id
+      )
+
+      if (updatedProduct instanceof Error) {
+        throw new InternalServerError(updatedProduct)
+      }
+
+      res.json(updatedProduct)
     } catch (error) {
       if (v.isValiError(error)) {
         const issues = v.flatten(error.issues).nested

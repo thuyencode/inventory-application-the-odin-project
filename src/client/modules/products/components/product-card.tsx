@@ -1,4 +1,5 @@
 import { Product } from '@/shared/types'
+import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
 import { capitalize } from '../utils'
 
@@ -33,8 +34,8 @@ function ProductCard({ product }: ProductCardProps) {
         </figcaption>
       </figure>
 
-      <div className='card-body bg-base-200 !py-2'>
-        <table>
+      <div className='card-body bg-base-200 !p-0'>
+        <table className='mx-5 my-3'>
           <tbody className='capitalize'>
             <tr>
               <th>Category</th>
@@ -62,6 +63,22 @@ function ProductCard({ product }: ProductCardProps) {
             </tr>
           </tbody>
         </table>
+
+        <div className='card-actions z-10 justify-end border-t border-base-content/20 px-5 py-3'>
+          <Link
+            className='btn btn-secondary btn-sm gap-1'
+            to='/products/$productId/edit'
+            params={{ productId: String(product.id) }}
+          >
+            Edit
+            <Icon className='text-lg' icon={'mdi:text-box-edit-outline'} />
+          </Link>
+
+          <button className='btn btn-error btn-sm gap-1'>
+            Delete
+            <Icon className='text-lg' icon={'mdi:trash-can-outline'} />
+          </button>
+        </div>
       </div>
     </Link>
   )

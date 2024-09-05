@@ -34,7 +34,7 @@ function MobileNavbar() {
           <li>
             <Link tabIndex={0} to='/products/new'>
               <Icon className='text-xl' icon={'mdi:plus'} />
-              Add New Product
+              New
             </Link>
           </li>
           <li>
