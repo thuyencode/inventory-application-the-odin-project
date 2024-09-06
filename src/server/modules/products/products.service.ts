@@ -1,4 +1,5 @@
 import {
+  deleteProduct,
   insertNewProduct,
   selectPagesCount,
   selectProductById,
@@ -40,4 +41,8 @@ export async function updateProduct(
   productId: number
 ) {
   return updateAlreadyExistedProduct(product, productId)
+}
+
+export async function removeProduct(productId: number) {
+  return deleteProduct(productId)
 }

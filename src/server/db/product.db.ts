@@ -96,7 +96,7 @@ INSERT INTO
   product (name, description, price, stock, brand, sku, weight, category_id, image_url)
 VALUES
   ($1::text, $2::text, $3::float, $4::int, $5::text, $6::text, $7::float, $8::int, $9::text)
-RETURNING *;`
+RETURNING *`
 
     const { rows } = await pool.query<Product>(sqlQuery, [
       product.name,
@@ -146,7 +146,7 @@ SET
   image_url = $9::text
 WHERE
   id = $10::int
-RETURNING *;`
+RETURNING *`
 
     const { rows } = await pool.query<Product>(sqlQuery, [
       product.name,
@@ -160,6 +160,30 @@ RETURNING *;`
       product.image_url,
       productId
     ])
+
+    return rows[0]
+  } catch (error) {
+    console.error(error)
+
+    return error
+  }
+}
+
+/**
+ * Delete a row from the `product` table.
+ *
+ * @export
+ * @async
+ * @param {number} productId
+ * @returns {Promise<Product | unknown>}
+ */
+export async function deleteProduct(
+  productId: number
+): Promise<Product | unknown> {
+  try {
+    const sqlQuery = `DELETE FROM product WHERE id = $1::int RETURNING *`
+
+    const { rows } = await pool.query<Product>(sqlQuery, [productId])
 
     return rows[0]
   } catch (error) {

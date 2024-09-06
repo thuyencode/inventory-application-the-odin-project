@@ -12,10 +12,11 @@ import {
   getPagesCount,
   getProductById,
   getProducts,
+  removeProduct,
   updateProduct
 } from './products.service'
 
-export const handleProductsApi = expressAsyncHandler(
+export const handleGetProductsApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
     try {
       let products: Product[]
@@ -50,7 +51,7 @@ export const handleProductsApi = expressAsyncHandler(
   }
 )
 
-export const handleProductByIdApi = expressAsyncHandler(
+export const handleGetProductByIdApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
     const id = Number(req.params.id)
 
@@ -68,7 +69,7 @@ export const handleProductByIdApi = expressAsyncHandler(
   }
 )
 
-export const handleSubmittedProduct = expressAsyncHandler(
+export const handleSubmittedProductApi = expressAsyncHandler(
   async (req: e.Request, res: e.Response) => {
     try {
       const submittedProduct = v.parse(SubmittedProductSchema, req.body)
@@ -116,6 +117,34 @@ export const handleUpdateProductByIdApi = expressAsyncHandler(
       }
 
       res.json(updatedProduct)
+    } catch (error) {
+      if (v.isValiError(error)) {
+        const issues = v.flatten(error.issues).nested
+
+        throw new BadRequest(issues)
+      } else {
+        throw error
+      }
+    }
+  }
+)
+
+export const handleDeleteProductByIdApi = expressAsyncHandler(
+  async (req: e.Request, res: e.Response) => {
+    try {
+      const id = Number(req.params.id)
+
+      if (!Number.isInteger(id)) {
+        throw new BadRequest('The given id must be an integer number')
+      }
+
+      const deletedProduct = await removeProduct(id)
+
+      if (deletedProduct instanceof Error) {
+        throw new InternalServerError(deletedProduct)
+      }
+
+      res.json(deletedProduct)
     } catch (error) {
       if (v.isValiError(error)) {
         const issues = v.flatten(error.issues).nested
