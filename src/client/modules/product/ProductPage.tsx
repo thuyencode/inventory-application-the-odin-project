@@ -1,11 +1,13 @@
-import { queryGetProduct } from '@/client/queries/products.queries'
+import { getProductQueryOptions } from '@/client/queries/products.queries'
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link, useParams } from '@tanstack/react-router'
 
 function ProductPage() {
   const { productId } = useParams({ from: '/products/$productId' })
-  const { data: product } = useSuspenseQuery(queryGetProduct(Number(productId)))
+  const { data: product } = useSuspenseQuery(
+    getProductQueryOptions(Number(productId))
+  )
 
   return (
     <>

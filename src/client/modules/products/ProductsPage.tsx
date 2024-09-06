@@ -1,4 +1,4 @@
-import { queryGetProductsWithFilters } from '@/client/queries/products.queries'
+import { getProductsWithFiltersQueryOptions } from '@/client/queries/products.queries'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useLoaderDeps } from '@tanstack/react-router'
 import {
@@ -11,7 +11,7 @@ function ProductsPage() {
   const { display, page = 1, ...filters } = useLoaderDeps({ from: '/products' })
   const {
     data: { products, pages_count }
-  } = useSuspenseQuery(queryGetProductsWithFilters({ ...filters, page }))
+  } = useSuspenseQuery(getProductsWithFiltersQueryOptions({ ...filters, page }))
 
   return (
     <>

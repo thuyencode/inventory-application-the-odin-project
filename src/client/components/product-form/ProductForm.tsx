@@ -1,5 +1,5 @@
 import { postProduct, putProduct } from '@/client/api/products.api'
-import { queryGetCategories } from '@/client/queries/categories.queries'
+import { getCategoriesQueryOptions } from '@/client/queries/categories.queries'
 import {
   BrandSchema,
   CategoryIdSchema,
@@ -51,7 +51,7 @@ function ProductForm({
   const router = useRouter()
   const {
     data: { categories }
-  } = useSuspenseQuery(queryGetCategories)
+  } = useSuspenseQuery(getCategoriesQueryOptions)
 
   const {
     mutateAsync: submitProduct,

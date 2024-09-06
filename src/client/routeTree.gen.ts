@@ -17,7 +17,7 @@ import { Route as ProductsRouteImport } from './routes/products/route'
 import { Route as CategoriesRouteImport } from './routes/categories/route'
 import { Route as ProductsNewRouteImport } from './routes/products/new/route'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId/route'
-import { Route as ProductsProductIdEditImport } from './routes/products/$productId/edit'
+import { Route as ProductsProductIdEditRouteImport } from './routes/products/$productId/edit/route'
 
 // Create Virtual Routes
 
@@ -78,11 +78,13 @@ const ProductsProductIdIndexLazyRoute = ProductsProductIdIndexLazyImport.update(
   import('./routes/products/$productId/index.lazy').then((d) => d.Route),
 )
 
-const ProductsProductIdEditRoute = ProductsProductIdEditImport.update({
-  path: '/edit',
-  getParentRoute: () => ProductsProductIdRouteRoute,
-} as any).lazy(() =>
-  import('./routes/products/$productId/edit.lazy').then((d) => d.Route),
+const ProductsProductIdEditRouteRoute = ProductsProductIdEditRouteImport.update(
+  {
+    path: '/edit',
+    getParentRoute: () => ProductsProductIdRouteRoute,
+  } as any,
+).lazy(() =>
+  import('./routes/products/$productId/edit/route.lazy').then((d) => d.Route),
 )
 
 // Populate the FileRoutesByPath interface
@@ -135,7 +137,7 @@ declare module '@tanstack/react-router' {
       id: '/products/$productId/edit'
       path: '/edit'
       fullPath: '/products/$productId/edit'
-      preLoaderRoute: typeof ProductsProductIdEditImport
+      preLoaderRoute: typeof ProductsProductIdEditRouteImport
       parentRoute: typeof ProductsProductIdRouteImport
     }
     '/products/$productId/': {
@@ -155,7 +157,7 @@ export const routeTree = rootRoute.addChildren({
   CategoriesRouteRoute,
   ProductsRouteRoute: ProductsRouteRoute.addChildren({
     ProductsProductIdRouteRoute: ProductsProductIdRouteRoute.addChildren({
-      ProductsProductIdEditRoute,
+      ProductsProductIdEditRouteRoute,
       ProductsProductIdIndexLazyRoute,
     }),
     ProductsNewRouteRoute,
@@ -207,7 +209,7 @@ export const routeTree = rootRoute.addChildren({
       "parent": "/products"
     },
     "/products/$productId/edit": {
-      "filePath": "products/$productId/edit.tsx",
+      "filePath": "products/$productId/edit/route.tsx",
       "parent": "/products/$productId"
     },
     "/products/$productId/": {

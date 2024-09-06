@@ -1,4 +1,4 @@
-import { queryGetProductsWithFilters } from '@/client/queries/products.queries'
+import { getProductsWithFiltersQueryOptions } from '@/client/queries/products.queries'
 import { ProductsSearchSchema } from '@/client/schemas/products-search.schema'
 import { ProductsSearch } from '@/client/types'
 import { createFileRoute } from '@tanstack/react-router'
@@ -13,7 +13,7 @@ export const Route = createFileRoute('/products')({
     const { queryClient } = context
 
     queryClient.ensureQueryData(
-      queryGetProductsWithFilters({ ...filters, page })
+      getProductsWithFiltersQueryOptions({ ...filters, page })
     )
   }
 })
