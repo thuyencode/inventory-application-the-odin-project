@@ -83,7 +83,9 @@ function ProductForm({
     <>
       <ErrorDialog isError={isError} error={error} />
 
-      <h3 className='text-center'>{edit ? 'Edit' : 'Add'} a new product</h3>
+      <h3 className='text-center'>
+        {edit ? `Edit product #${productId}` : 'Add a new product'}{' '}
+      </h3>
 
       <form
         className='grid w-full max-w-lg grid-cols-1 gap-5 md:max-w-3xl md:grid-cols-2'

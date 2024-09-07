@@ -1,4 +1,5 @@
 import { getProductQueryOptions } from '@/client/queries/products.queries'
+import useProductIdForDeletionState from '@/client/state/useProductIdDeletion'
 import { Icon } from '@iconify/react'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { Link, useParams } from '@tanstack/react-router'
@@ -8,6 +9,7 @@ function ProductPage() {
   const { data: product } = useSuspenseQuery(
     getProductQueryOptions(Number(productId))
   )
+  const { setProductIdForDeletion } = useProductIdForDeletionState()
 
   return (
     <>
@@ -41,7 +43,12 @@ function ProductPage() {
               <Icon className='text-lg' icon={'mdi:text-box-edit-outline'} />
             </Link>
 
-            <button className='btn btn-error btn-block gap-1'>
+            <button
+              className='btn btn-error btn-block gap-1'
+              onClick={() => {
+                setProductIdForDeletion(product.id)
+              }}
+            >
               Delete
               <Icon className='text-lg' icon={'mdi:trash-can-outline'} />
             </button>

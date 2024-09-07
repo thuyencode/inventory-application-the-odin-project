@@ -1,4 +1,4 @@
-import ProductForm from '@/client/components/product-form/ProductForm'
+import ProductForm from '@/client/components/product-form'
 import { getProductQueryOptions } from '@/client/queries/products.queries'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useParams } from '@tanstack/react-router'

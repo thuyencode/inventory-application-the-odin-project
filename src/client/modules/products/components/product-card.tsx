@@ -1,3 +1,4 @@
+import useProductIdForDeletionState from '@/client/state/useProductIdDeletion'
 import { Product } from '@/shared/types'
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
@@ -8,14 +9,10 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
+  const { setProductIdForDeletion } = useProductIdForDeletionState()
+
   return (
-    <Link
-      className='product-card card card-bordered tooltip card-compact h-min w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'
-      to='/products/$productId'
-      params={{ productId: String(product.id) }}
-      data-tip={capitalize(product.name)}
-      tabIndex={0}
-    >
+    <div className='product-card card card-bordered tooltip card-compact h-min w-full rounded-sm border border-base-content/20 bg-base-300 shadow-lg'>
       <figure className='!justify-between gap-5 border-b border-base-content/20 p-5 py-3'>
         <img
           className='aspect-square w-24 rounded-sm object-cover object-top duration-300 hover:scale-110'
@@ -29,7 +26,15 @@ function ProductCard({ product }: ProductCardProps) {
         />
 
         <figcaption className='flex flex-col items-end'>
-          <span className='text-wrap text-end'>{product.name}</span>
+          <Link
+            className='link-hover link text-wrap text-end'
+            to='/products/$productId'
+            params={{ productId: String(product.id) }}
+            data-tip={capitalize(product.name)}
+            tabIndex={0}
+          >
+            {product.name}
+          </Link>
           <span className='font-light'>${product.price}</span>
         </figcaption>
       </figure>
@@ -69,18 +74,24 @@ function ProductCard({ product }: ProductCardProps) {
             className='btn btn-secondary btn-sm gap-1'
             to='/products/$productId/edit'
             params={{ productId: String(product.id) }}
+            tabIndex={0}
           >
             Edit
             <Icon className='text-lg' icon={'mdi:text-box-edit-outline'} />
           </Link>
 
-          <button className='btn btn-error btn-sm gap-1'>
+          <button
+            className='btn btn-error btn-sm z-10 gap-1'
+            onClick={() => {
+              setProductIdForDeletion(product.id)
+            }}
+          >
             Delete
             <Icon className='text-lg' icon={'mdi:trash-can-outline'} />
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

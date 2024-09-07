@@ -103,10 +103,23 @@ export async function postProduct(product: SubmittedProduct) {
  * @export
  * @async
  * @param {SubmittedProduct} product
+ * @param {number} productId
  * @returns {unknown}
  */
 export async function putProduct(product: SubmittedProduct, productId: number) {
   return await productsApi
     .put(String(productId), { json: product })
     .json<Product>()
+}
+
+/**
+ * Send a `DELETE` request to `/api/products/:id`.
+ *
+ * @export
+ * @async
+ * @param {number} productId
+ * @returns {unknown}
+ */
+export async function deleteProduct(productId: number) {
+  return await productsApi.delete(String(productId)).json<Product>()
 }
