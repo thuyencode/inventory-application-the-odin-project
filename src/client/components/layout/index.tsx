@@ -9,7 +9,7 @@ function RootLayout() {
     <>
       <Header />
 
-      <main className='container my-10 flex flex-col items-center gap-10 max-sm:p-5'>
+      <main className='container my-10 flex flex-col items-center gap-10'>
         <Outlet />
       </main>
 

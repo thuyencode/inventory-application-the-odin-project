@@ -88,7 +88,7 @@ function ProductForm({
       </h3>
 
       <form
-        className='grid w-full max-w-lg grid-cols-1 gap-5 md:max-w-3xl md:grid-cols-2'
+        className='grid w-full max-w-lg grid-cols-1 gap-5 px-5 md:max-w-3xl md:grid-cols-2'
         onSubmit={(e) => {
           e.preventDefault()
           e.stopPropagation()

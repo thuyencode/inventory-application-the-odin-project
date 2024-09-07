@@ -24,12 +24,6 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link tabIndex={0} to='/products/new'>
-              <Icon className='text-2xl' icon={'mdi:plus'} />
-              New
-            </Link>
-          </li>
-          <li>
             <Link tabIndex={0} to='/categories'>
               <Icon className='text-2xl' icon={'mdi:tag'} />
               Categories

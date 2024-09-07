@@ -32,12 +32,6 @@ function MobileNavbar() {
             </Link>
           </li>
           <li>
-            <Link tabIndex={0} to='/products/new'>
-              <Icon className='text-xl' icon={'mdi:plus'} />
-              New
-            </Link>
-          </li>
-          <li>
             <Link tabIndex={0} to='/categories'>
               <Icon className='text-xl' icon={'mdi:tag'} />
               Categories
