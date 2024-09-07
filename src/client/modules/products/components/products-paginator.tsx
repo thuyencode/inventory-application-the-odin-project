@@ -9,6 +9,10 @@ function ProductsPaginator({
   pagesCount,
   currentPage
 }: ProductsPaginatorProps) {
+  if (pagesCount < 2) {
+    return null
+  }
+
   return (
     <div className='join'>
       {Array.from({ length: pagesCount }, (_, index) => {
