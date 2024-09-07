@@ -8,6 +8,10 @@ function ProductsTable({
 }: Omit<ProductsPageComponentProps, 'display'>) {
   const { setProductIdForDeletion } = useProductIdForDeletionState()
 
+  if (products.length === 0) {
+    return <h2>There're no products</h2>
+  }
+
   return (
     <div className='w-full flex-1 overflow-x-auto'>
       <table className='products-table table table-zebra max-md:table-md'>
