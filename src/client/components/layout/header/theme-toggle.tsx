@@ -2,82 +2,48 @@ import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { themeChange } from 'theme-change'
 
-const DEFAULT_TOGGLE_STATE = { name: 'system', icon: 'mdi:computer' }
-const LIGHT_TOGGLE_STATE = { name: 'light', icon: 'ph:sun-fill' }
-const DARK_TOGGLE_STATE = { name: 'dark', icon: 'ph:moon-fill' }
+const TOGGLE_STATES = {
+  default: { name: 'system', icon: 'mdi:computer', theme: '' },
+  light: { name: 'light', icon: 'ph:sun-fill', theme: 'light' },
+  dark: { name: 'dark', icon: 'ph:moon-fill', theme: 'dark' }
+}
 
 function ThemeToggle() {
-  const [toggleName, setToggleName] = useState(DEFAULT_TOGGLE_STATE)
+  const [toggleState, setToggleState] = useState(TOGGLE_STATES.default)
 
   useEffect(() => {
     themeChange(false)
   }, [])
 
   useEffect(() => {
-    const theme = localStorage.getItem('theme') as 'light' | 'dark' | null
+    const theme = localStorage.getItem('theme') as 'light' | 'dark' | ''
 
-    switch (theme) {
-      case 'light':
-        setToggleName(LIGHT_TOGGLE_STATE)
-        break
-
-      case 'dark':
-        setToggleName(DARK_TOGGLE_STATE)
-        break
-
-      default:
-        setToggleName(DEFAULT_TOGGLE_STATE)
-        break
-    }
+    setToggleState(TOGGLE_STATES[theme === '' ? 'default' : theme])
   }, [])
 
   return (
     <details className='dropdown-end md:dropdown'>
       <summary className='gap-2 capitalize'>
-        <Icon className='text-xl' icon={toggleName.icon} />
-        {toggleName.name}
+        <Icon className='text-xl' icon={toggleState.icon} />
+        {toggleState.name}
       </summary>
 
       <ul className='border-base-content/50 md:menu md:dropdown-content md:z-[1] md:w-40 md:rounded-box md:border md:bg-base-300 md:p-2 md:shadow-lg'>
-        <li>
-          <button
-            className='capitalize'
-            data-set-theme=''
-            data-act-class='ACTIVECLASS'
-            onClick={() => {
-              setToggleName(DEFAULT_TOGGLE_STATE)
-            }}
-          >
-            <Icon className='text-xl' icon={DEFAULT_TOGGLE_STATE.icon} />
-            {DEFAULT_TOGGLE_STATE.name}
-          </button>
-        </li>
-        <li>
-          <button
-            className='capitalize'
-            data-set-theme='dark'
-            data-act-class='ACTIVECLASS'
-            onClick={() => {
-              setToggleName(DARK_TOGGLE_STATE)
-            }}
-          >
-            <Icon className='text-xl' icon={DARK_TOGGLE_STATE.icon} />
-            {DARK_TOGGLE_STATE.name}
-          </button>
-        </li>
-        <li>
-          <button
-            className='capitalize'
-            data-set-theme='light'
-            data-act-class='ACTIVECLASS'
-            onClick={() => {
-              setToggleName(LIGHT_TOGGLE_STATE)
-            }}
-          >
-            <Icon className='text-xl' icon={LIGHT_TOGGLE_STATE.icon} />
-            {LIGHT_TOGGLE_STATE.name}
-          </button>
-        </li>
+        {Object.values(TOGGLE_STATES).map((state) => (
+          <li key={state.name}>
+            <button
+              className='capitalize'
+              data-set-theme={state.theme}
+              data-act-class='ACTIVECLASS'
+              onClick={() => {
+                setToggleState(state)
+              }}
+            >
+              <Icon className='text-xl' icon={state.icon} />
+              {state.name}
+            </button>
+          </li>
+        ))}
       </ul>
     </details>
   )
