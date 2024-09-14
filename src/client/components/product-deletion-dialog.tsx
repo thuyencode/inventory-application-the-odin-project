@@ -78,9 +78,16 @@ function ConfirmationForm({
   onCancel,
   disabled
 }: ConfirmationFormProps) {
+  const { productIdForDeletion } = useProductIdForDeletionState()
   const [input, setInput] = useState('')
 
   const CONFIRMATION_PHRASE = 'I know this action is irreversible'
+
+  useEffect(() => {
+    if (!productIdForDeletion) {
+      setInput('')
+    }
+  }, [productIdForDeletion])
 
   return (
     <form
@@ -110,12 +117,13 @@ function ConfirmationForm({
       >
         Delete this product
       </button>
-      <button
+      <div
         className='btn btn-outline btn-neutral btn-sm h-[35px]'
         onClick={onCancel}
+        role='button'
       >
         Cancel
-      </button>
+      </div>
     </form>
   )
 }
