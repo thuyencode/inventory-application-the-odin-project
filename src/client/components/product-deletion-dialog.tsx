@@ -16,9 +16,9 @@ function ProductDeletionDialog() {
     onSuccess: async () => {
       resetProductIdForDeletion()
 
-      await queryClient.invalidateQueries({ queryKey: ['products'] })
       await router.invalidate()
       await router.navigate({ to: '/products', search: (prev) => prev })
+      await queryClient.invalidateQueries({ queryKey: ['products'] })
     }
   })
 

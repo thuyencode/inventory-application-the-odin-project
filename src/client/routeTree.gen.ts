@@ -152,18 +152,117 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({
-  IndexLazyRoute,
-  CategoriesRouteRoute,
-  ProductsRouteRoute: ProductsRouteRoute.addChildren({
-    ProductsProductIdRouteRoute: ProductsProductIdRouteRoute.addChildren({
-      ProductsProductIdEditRouteRoute,
-      ProductsProductIdIndexLazyRoute,
-    }),
-    ProductsNewRouteRoute,
-    ProductsIndexLazyRoute,
-  }),
-})
+interface ProductsProductIdRouteRouteChildren {
+  ProductsProductIdEditRouteRoute: typeof ProductsProductIdEditRouteRoute
+  ProductsProductIdIndexLazyRoute: typeof ProductsProductIdIndexLazyRoute
+}
+
+const ProductsProductIdRouteRouteChildren: ProductsProductIdRouteRouteChildren =
+  {
+    ProductsProductIdEditRouteRoute: ProductsProductIdEditRouteRoute,
+    ProductsProductIdIndexLazyRoute: ProductsProductIdIndexLazyRoute,
+  }
+
+const ProductsProductIdRouteRouteWithChildren =
+  ProductsProductIdRouteRoute._addFileChildren(
+    ProductsProductIdRouteRouteChildren,
+  )
+
+interface ProductsRouteRouteChildren {
+  ProductsProductIdRouteRoute: typeof ProductsProductIdRouteRouteWithChildren
+  ProductsNewRouteRoute: typeof ProductsNewRouteRoute
+  ProductsIndexLazyRoute: typeof ProductsIndexLazyRoute
+}
+
+const ProductsRouteRouteChildren: ProductsRouteRouteChildren = {
+  ProductsProductIdRouteRoute: ProductsProductIdRouteRouteWithChildren,
+  ProductsNewRouteRoute: ProductsNewRouteRoute,
+  ProductsIndexLazyRoute: ProductsIndexLazyRoute,
+}
+
+const ProductsRouteRouteWithChildren = ProductsRouteRoute._addFileChildren(
+  ProductsRouteRouteChildren,
+)
+
+export interface FileRoutesByFullPath {
+  '/': typeof IndexLazyRoute
+  '/categories': typeof CategoriesRouteRoute
+  '/products': typeof ProductsRouteRouteWithChildren
+  '/products/$productId': typeof ProductsProductIdRouteRouteWithChildren
+  '/products/new': typeof ProductsNewRouteRoute
+  '/products/': typeof ProductsIndexLazyRoute
+  '/products/$productId/edit': typeof ProductsProductIdEditRouteRoute
+  '/products/$productId/': typeof ProductsProductIdIndexLazyRoute
+}
+
+export interface FileRoutesByTo {
+  '/': typeof IndexLazyRoute
+  '/categories': typeof CategoriesRouteRoute
+  '/products/new': typeof ProductsNewRouteRoute
+  '/products': typeof ProductsIndexLazyRoute
+  '/products/$productId/edit': typeof ProductsProductIdEditRouteRoute
+  '/products/$productId': typeof ProductsProductIdIndexLazyRoute
+}
+
+export interface FileRoutesById {
+  __root__: typeof rootRoute
+  '/': typeof IndexLazyRoute
+  '/categories': typeof CategoriesRouteRoute
+  '/products': typeof ProductsRouteRouteWithChildren
+  '/products/$productId': typeof ProductsProductIdRouteRouteWithChildren
+  '/products/new': typeof ProductsNewRouteRoute
+  '/products/': typeof ProductsIndexLazyRoute
+  '/products/$productId/edit': typeof ProductsProductIdEditRouteRoute
+  '/products/$productId/': typeof ProductsProductIdIndexLazyRoute
+}
+
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/categories'
+    | '/products'
+    | '/products/$productId'
+    | '/products/new'
+    | '/products/'
+    | '/products/$productId/edit'
+    | '/products/$productId/'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/categories'
+    | '/products/new'
+    | '/products'
+    | '/products/$productId/edit'
+    | '/products/$productId'
+  id:
+    | '__root__'
+    | '/'
+    | '/categories'
+    | '/products'
+    | '/products/$productId'
+    | '/products/new'
+    | '/products/'
+    | '/products/$productId/edit'
+    | '/products/$productId/'
+  fileRoutesById: FileRoutesById
+}
+
+export interface RootRouteChildren {
+  IndexLazyRoute: typeof IndexLazyRoute
+  CategoriesRouteRoute: typeof CategoriesRouteRoute
+  ProductsRouteRoute: typeof ProductsRouteRouteWithChildren
+}
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexLazyRoute: IndexLazyRoute,
+  CategoriesRouteRoute: CategoriesRouteRoute,
+  ProductsRouteRoute: ProductsRouteRouteWithChildren,
+}
+
+export const routeTree = rootRoute
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
