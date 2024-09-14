@@ -55,7 +55,7 @@ function ProductPage() {
           </figcaption>
         </figure>
 
-        <div className='card-body flex-1 py-0 pr-0 font-light max-md:p-0'>
+        <div className='card-body h-min flex-1 py-0 pr-0 font-light max-md:p-0'>
           <p className='capitalize'>
             <span className='font-medium'>Name:</span> {product.name}
           </p>
