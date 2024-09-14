@@ -1,5 +1,6 @@
 import { postProduct, putProduct } from '@/client/api/products.api'
 import { getCategoriesQueryOptions } from '@/client/queries/categories.queries'
+import { capitalize } from '@/client/utils'
 import {
   BrandSchema,
   CategoryIdSchema,
@@ -204,24 +205,23 @@ function ProductForm({
               </div>
 
               <select
-                className={`input input-bordered ${field.state.value !== 0 ? 'capitalize' : ''}`}
+                className={`input input-bordered`}
                 name={field.name}
                 value={field.state.value}
                 onBlur={field.handleBlur}
                 onChange={(e) => field.handleChange(Number(e.target.value))}
                 required
               >
-                <option className='normal-case' value={0} disabled>
+                <option value={0} disabled>
                   -- Choose a category --
                 </option>
 
                 {categories.map((category) => (
                   <option
-                    className='capitalize'
                     key={`form_select_category_${category.id}`}
                     value={category.id}
                   >
-                    {category.name}
+                    {capitalize(category.name)}
                   </option>
                 ))}
               </select>

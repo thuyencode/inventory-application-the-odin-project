@@ -1,8 +1,8 @@
 import useProductIdForDeletionState from '@/client/state/useProductIdDeletion'
+import { capitalize } from '@/client/utils'
 import { Product } from '@/shared/types'
 import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
-import { capitalize } from '../utils'
 
 interface ProductCardProps {
   product: Product
