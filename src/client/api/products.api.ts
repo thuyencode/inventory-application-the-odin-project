@@ -94,7 +94,7 @@ export async function getProductById(
  * @returns {unknown}
  */
 export async function postProduct(product: SubmittedProduct) {
-  return await productsApi.put('', { json: product }).json<Product>()
+  return await productsApi.post('', { json: product }).json<Product>()
 }
 
 /**

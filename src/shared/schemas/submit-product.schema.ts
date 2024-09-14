@@ -11,7 +11,7 @@ export const DescriptionSchema = v.nullish(
   v.pipe(v.string(), v.trim(), v.minLength(10), v.maxLength(500))
 )
 
-export const PriceSchema = v.pipe(v.number(), v.minValue(0.1))
+export const PriceSchema = v.pipe(v.number(), v.minValue(0.01))
 
 export const StockSchema = v.pipe(v.number(), v.integer(), v.minValue(1))
 

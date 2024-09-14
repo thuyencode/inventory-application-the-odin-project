@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react/dist/iconify.js'
+import { Icon } from '@iconify/react'
 import { Link } from '@tanstack/react-router'
 import DisplayFormatToggle from './display-format-toggle'
 import OrderBySelector from './order-by-selector'

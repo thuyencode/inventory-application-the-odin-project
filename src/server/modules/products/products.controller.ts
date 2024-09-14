@@ -81,6 +81,8 @@ export const handleSubmittedProductApi = expressAsyncHandler(
       }
 
       res.json(newProduct)
+
+      throw new InternalServerError(newProduct)
     } catch (error) {
       if (v.isValiError(error)) {
         const issues = v.flatten(error.issues).nested
