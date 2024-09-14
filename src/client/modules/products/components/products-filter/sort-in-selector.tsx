@@ -17,6 +17,7 @@ function SortInSelector() {
           <li key={type}>
             <Link
               className='justify-between'
+              to='.'
               search={(prev) => ({ ...prev, sortIn: type })}
               aria-description={`Sort in: ${type}`}
               tabIndex={0}

@@ -17,6 +17,7 @@ function OrderBySelector() {
           <li key={type}>
             <Link
               className='justify-between text-nowrap'
+              to='.'
               search={(prev) => ({ ...prev, orderBy: type })}
               aria-description={`Order by: ${type}`}
               tabIndex={0}

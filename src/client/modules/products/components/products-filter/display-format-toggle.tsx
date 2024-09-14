@@ -12,6 +12,7 @@ function DisplayFormatToggle() {
       {DISPLAY_TYPE.map((type) => (
         <Link
           className={`btn btn-outline join-item btn-sm ${currentlyDisplayIn === type ? 'btn-active' : ''}`}
+          to='.'
           search={(prev) => ({ ...prev, display: type })}
           aria-description={`Show in ${type}`}
           tabIndex={0}
