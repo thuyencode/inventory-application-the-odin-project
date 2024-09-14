@@ -1,8 +1,8 @@
+import withClose from '@/client/hoc/with-close'
 import { ORDER_BY, ORDER_BY_WITH_ICONS } from '@/shared/constants'
 import { Icon } from '@iconify/react'
 import { Link, useSearch } from '@tanstack/react-router'
 import { forwardRef } from 'react'
-import withClose from './with-close'
 
 const OrderBySelector = withClose(
   forwardRef<HTMLDetailsElement>(function (_, ref) {
